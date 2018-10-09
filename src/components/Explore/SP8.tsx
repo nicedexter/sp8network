@@ -14,7 +14,7 @@ const style: cytoscape.CssStyleDeclaration = [
   {
     selector: "node",
     style: {
-      "background-color": "pink",
+      "background-color": "brown",
       "border-color": "#000",
       "border-opacity": 0.6,
       "border-width": 0,
@@ -23,6 +23,8 @@ const style: cytoscape.CssStyleDeclaration = [
       label: "data(label)",
       padding: 5,
       shape: "ellipse",
+      "text-background-color": "#fff",
+      "text-background-opacity": 0.6,
       "text-max-width": "160px",
       "text-valign": "bottom",
       "text-wrap": "wrap",
@@ -58,13 +60,24 @@ const style: cytoscape.CssStyleDeclaration = [
   {
     selector: "node[level = 0]",
     style: {
-      "background-color": "#6B6A68"
+      // "background-color": "#6B6A68",
+      "background-color": "purple",
+      color: "white",
+      "font-size": "24px",
+      "font-weight": "bold",
+      height: "88px",
+      "padding": "10px",
+      "text-background-opacity": 0,
+      "text-halign": "center",
+      "text-valign": "center",
+      
+      width: "88px"
     }
   },
   {
     selector: "node[level = 1]",
     style: {
-      "background-color": "#068587"
+      "background-color": "#068587",
     }
   },
   {
@@ -88,7 +101,31 @@ const style: cytoscape.CssStyleDeclaration = [
   {
     selector: "node[level = 5]",
     style: {
-      "background-color": "#000"
+      "background-color": "#FF0000"
+    }
+  },
+  {
+    selector: "node[level = 6]",
+    style: {
+      "background-color": "#0DFF20"
+    }
+  },
+  {
+    selector: "node[level = 7]",
+    style: {
+      "background-color": "#4687E8"
+    }
+  },
+  {
+    selector: "node[level = 8]",
+    style: {
+      "background-color": "#E8C40E"
+    }
+  },
+  {
+    selector: "node[level = 9]",
+    style: {
+      "background-color": "#E30AFF"
     }
   },
   {
@@ -131,27 +168,45 @@ const style: cytoscape.CssStyleDeclaration = [
   {
     selector: "edge[level = 5]",
     style: {
-      "line-color": "#000"
+      "line-color": "#FF0000"
+    }
+  },
+  {
+    selector: "edge[level = 6]",
+    style: {
+      "line-color": "#0DFF20"
+    }
+  },
+  {
+    selector: "edge[level = 7]",
+    style: {
+      "line-color": "#4687E8"
+    }
+  },
+  {
+    selector: "edge[level = 8]",
+    style: {
+      "line-color": "#E8C40E"
     }
   }
 ];
 
 const layout = {
-  animate: "during",
+  animate: false,
   componentSpacing: 100,
   coolingFactor: 0.95,
   edgeElasticity: 100,
   fit: true,
-  gravity: 0,
+  gravity: 1,
   idealEdgeLength: 100,
-  initialTemp: 1000,
+  initialTemp: 1500,
   minTemp: 1.0,
   name: "cose",
   nestingFactor: 5,
   nodeOverlap: 20,
   nodeRepulsion: 400000,
-  numIter: 10000,
-  padding: 50,
+  numIter: 1000,
+  padding: 10,
   randomize: false,
   refresh: 20
 };
@@ -203,9 +258,6 @@ class Graph extends Component<any> {
   private cyRef: any;
   private tapped = false;
   private collection: any;
-  private edges: any;
-  // private createdNode: any;
-  // private nearestNode: any;
 
   public componentDidMount() {
     const nodes: any = [];
@@ -229,8 +281,9 @@ class Graph extends Component<any> {
           return;
         }
 
-        let level = 0;
+        let level = 1;
         const level3 = row["Niveau 3"];
+
         if (level3 === "EpiCARE") {
           level = 1;
         }
@@ -243,7 +296,10 @@ class Graph extends Component<any> {
           level = 3;
         }
 
-        if (level3 === "WP8.8 and 8.10 : Federated analysis of human intracerebral stimulation and recording data") {
+        if (
+          level3 ===
+          "WP8.8 and 8.10 : Federated analysis of human intracerebral stimulation and recording data"
+        ) {
           level = 4;
         }
 
@@ -251,9 +307,29 @@ class Graph extends Component<any> {
           level = 5;
         }
 
-        if (level3 === "WP8.8 and 8.10 : Federated analysis of human intracerebral stimulation and recording data") {
+        if (
+          level3 ===
+          "WP8.8 and 8.10 : Federated analysis of human intracerebral stimulation and recording data"
+        ) {
           level = 6;
         }
+
+        if (level3 === "ERN - RND") {
+          level = 7;
+        }
+
+        if (row["Niveau 2"] === "MIP DATA GOVERNANCE STEERING COMMITTEE") {
+          level = 8;
+        }
+
+        if (
+          level3 ===
+          "WP8.7TVB � NDD - Testing pathophysiological models of brain diseases"
+        ) {
+          level = 9;
+        }
+
+    
 
         // const parentNode = nodes.filter((n: any) => {
         //   const row1 = n.data.data;
@@ -265,7 +341,6 @@ class Graph extends Component<any> {
         //   return false;
         // })
 
-        // console.log(id, parentNode);
 
         let type: string | undefined = row.Type;
         if (Object.keys(computedRow).length - 1 !== i) {
@@ -278,12 +353,23 @@ class Graph extends Component<any> {
             id,
             label: val,
             level,
-            type
+            type,
+            weight: 0
             // parent: parent ? parent : undefined
           }
         };
+
+        if (node.data.id === "SP8") {
+          node.data.level = 0;
+          node.data.weight = 100;
+        }
+
         nodes.push(node);
       });
+
+      console.log(
+        nodes.map((n: any) => ({ name: n.data.label, level: n.data.level }))
+      );
     });
 
     // Build edges
@@ -308,7 +394,7 @@ class Graph extends Component<any> {
         }
 
         const node1 = nodes.find((n: any) => n.data.id === id);
-        console.log(node1.data.level);
+        // console.log(node1.data.level);
 
         edges.push({
           data: {
@@ -318,7 +404,7 @@ class Graph extends Component<any> {
             target: id2
           }
         });
-        console.log(edges)
+        // console.log(edges)
       });
     });
 
@@ -373,8 +459,6 @@ class Graph extends Component<any> {
   private handleTap = (event: any): void => {
     console.log("handleTap", event.type, "this.tapped", this.tapped);
     const { target } = event;
-    // const id = Math.round(Math.random() * 100000);
-    console.log(target);
 
     if (target === this.cy) {
       return;
@@ -384,18 +468,11 @@ class Graph extends Component<any> {
       if (!this.tapped) {
         this.tapped = true;
         const cy = this.cy;
-        this.edges = cy
-          .elements()
-          .edgesWith(target):
-        this.collection = this.edges.targets()
-        // cy.nodes().hidden = true;
-        console.log(this.collection);
+        this.collection = target.successors();
         cy.remove(this.collection);
         target.restore();
       } else {
-        console.log(this.collection);
         this.collection.restore();
-        this.edges.restore()
         this.tapped = false;
       }
     }
