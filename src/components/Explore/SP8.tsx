@@ -10,51 +10,65 @@ const style: cytoscape.CssStyleDeclaration = [
   {
     selector: "node",
     style: {
-      "background-color": "#ad1a66",
-      color: "#fff",
+      "background-color": "pink",
+      "border-color": "#000",
+      "border-opacity": 0.6,
+      "border-width": 0,
+      color: "#000",
+      height: "44px",
       label: "data(label)",
       padding: 5,
-      shape: "roundrectangle",
-      "text-halign": "center",
-      "text-valign": "center",
-      width: "label"
+      shape: "ellipse",
+      "text-max-width": "160px",
+      "text-valign": "bottom",
+      "text-wrap": "wrap",
+      // "text-halign": "center",
+      // "text-valign": "center",
+      width: "44px"
+    }
+  },
+  {
+    selector: "node[type = 'HOSPITAL']",
+    style: {
+      "backgound-fit": 'cover cover',
+      "background-image": 'https://avatars2.githubusercontent.com/u/51363?s=64&v=4',
+      "background-opacity": 1
     }
   },
   {
     selector: "node[level = 0]",
     style: {
-      "border-color": "#000",
-      "border-opacity": 0.6,
-      "border-width": 2
+      "background-color": "#6B6A68"
     }
   },
   {
     selector: "node[level = 1]",
     style: {
-      "background-color": "#fff",
-      color: "#000"
+      "background-color": "#068587"
     }
   },
   {
     selector: "node[level = 2]",
     style: {
-      "background-color": "#FFC72C",
-      color: "#000"
+      "background-color": "#4FB99F"
     }
   },
   {
     selector: "node[level = 3]",
     style: {
-      "background-color": "#CCC00F",
-      color: "#fff",
-      "line-color": "#ad1a66"
+      "background-color": "#F2B134"
     }
   },
   {
-    selector: "node[level = 3]",
+    selector: "node[level = 4]",
     style: {
-      "background-color": "#999558",
-      color: "#fff"
+      "background-color": "#ED553B"
+    }
+  },
+  {
+    selector: "node[level = 5]",
+    style: {
+      "background-color": "#000"
     }
   },
   {
@@ -91,7 +105,7 @@ const style: cytoscape.CssStyleDeclaration = [
   }
 ];
 
-// const layout1 = {
+// const layout = {
 //   animate: true,
 //   componentSpacing: 100,
 //   coolingFactor: 0.95,
@@ -117,7 +131,7 @@ const layout = {
   // Divisor to compute edge forces
   edgeElasticity: 0.15,
   // Whether to fit the network view after when done
-  fit: true,
+  fit: false,
   // Gravity force (constant)
   gravity: 0.25,
   // Gravity force (constant) for compounds
@@ -127,7 +141,7 @@ const layout = {
   // Gravity range (constant) for compounds
   gravityRangeCompound: 1.5,
   // Ideal (intra-graph) edge length
-  idealEdgeLength: 50,
+  idealEdgeLength: 150,
   // Initial cooling factor for incremental layout
   initialEnergyOnIncremental: 0.9,
   name: "cose-bilkent",
@@ -136,9 +150,9 @@ const layout = {
   // Whether to include labels in node dimensions. Useful for avoiding label overlap
   nodeDimensionsIncludeLabels: true,
   // Node repulsion (non overlapping) multiplier
-  nodeRepulsion: 145000,
+  nodeRepulsion: 205000,
   // Maximum number of iterations to perform
-  numIter: 10000,
+  numIter: 20000,
   // Padding on fit
   padding: 10,
   // Whether to enable incremental mode
@@ -157,14 +171,16 @@ class Graph extends Component<any> {
   private cy: any;
   private cyRef: any;
   // private createdNode: any;
-  private nearestNode: any;
+  // private nearestNode: any;
 
   public componentDidMount() {
     const nodes: any = [];
     const edges: any = [];
 
-    const makeId = (r: string) => r.split(" ").join("");
+    const makeId = (r: string) =>
+      r !== "" && r !== "..." ? r.split(" ").join("") : null;
 
+    // Build nodes from csv
     data.forEach(row => {
       Object.keys(row)
         .filter(key => key !== "Type" && row[key] !== "" && row[key] !== "...")
@@ -172,52 +188,79 @@ class Graph extends Component<any> {
           const val = row[key];
           const id = makeId(val);
 
+          // node already exists
           if (nodes.find((n: any) => n.data.id === id)) {
             return;
           }
 
           let level = 0;
-          if (row["Niveau 3"] === "EpiCARE" ) {
-            level = 1
-          } 
+          const level3 = row["Niveau 3"];
+          if (level3 === "EpiCARE") {
+            level = 1;
+          }
 
-          if (row["Niveau 3"] === "CENTER TBI" ) {
-            level = 2
-          } 
+          if (level3 === "CENTER TBI") {
+            level = 2;
+          }
 
-          if (row["Niveau 3"] === "CREACTIVE" ) {
-            level = 3
-          } 
+          if (level3 === "CREACTIVE") {
+            level = 3;
+          }
 
-          if (row["Niveau 3"] === "ERN - RND" ) {
-            level = 4
-          } 
+          if (level3 === "ERN - RND") {
+            level = 4;
+          }
 
-          nodes.push({
+          if (row["Niveau 2"] === "SGA1 Partnering Hospitals") {
+            level = 5;
+          }
+
+          // const parentNode = nodes.filter((n: any) => {
+          //   const row1 = n.data.data;
+          //   const path = Object.keys(row1).map(key1 => makeId(row1[key1]));
+          //   if (path) {
+          //     return path.includes(id);
+          //   }
+
+          //   return false;
+          // })
+
+          // console.log(id, parentNode);
+
+          const type = "HOSPITAL";
+
+
+          const node = {
             data: {
               data: row,
               id,
               label: val,
-              level
+              level,
+              type
+              // parent: parent ? parent : undefined
             }
-          });
+          };
+          nodes.push(node);
         });
     });
 
+    // Build edges
     nodes.forEach((node: any) => {
       const data1 = node.data.data;
       const values = Object.keys(data1)
         .slice(0, 4)
         .map(k => data1[k]);
-      
-        values.forEach((v, j) => {
+
+      values.forEach((v, j) => {
         if (j + 1 >= values.length) {
           return;
         }
 
         const id = makeId(v);
         const id2 = makeId(values[j + 1]);
-        if (!id2) { return; }
+        if (!id2) {
+          return;
+        }
         if (edges.find((e: any) => e.source === id && e.target === id2)) {
           return;
         }
@@ -228,8 +271,6 @@ class Graph extends Component<any> {
             target: id2
           }
         });
-
-        console.log(edges)
       });
     });
 
@@ -290,15 +331,15 @@ class Graph extends Component<any> {
     });
 
     this.cy = cy;
-    // cy.on("tap", (evt: any) => {
-    //   this.handleTap(evt);
+    cy.on("tap", (evt: any) => {
+      this.handleTap(evt);
+    });
+    // cy.on("grabon", (evt: any) => {
+    //   this.handleDrag(evt);
     // });
-    cy.on("grabon", (evt: any) => {
-      this.handleDrag(evt);
-    });
-    cy.on("free", (evt: any) => {
-      this.handleDrag(evt);
-    });
+    // cy.on("free", (evt: any) => {
+    //   this.handleDrag(evt);
+    // });
   }
 
   public componentWillUnmount() {
@@ -311,7 +352,7 @@ class Graph extends Component<any> {
     return false;
   }
 
-  public render() {
+  public render = () => {
     return (
       <div>
         <div
@@ -327,92 +368,92 @@ class Graph extends Component<any> {
         />
       </div>
     );
-  }
+  };
 
-  // private handleTap = (event: any): void => {
-  //   console.log("handleTap", event.type);
-  //   const cy = this.cy;
-  //   const { target } = event;
-  //   const id = Math.round(Math.random() * 100000);
-  //   if (target === cy) {
-  //     const newNode = {
-  //       data: {
-  //         id,
-  //         label: "New task"
-  //       },
-  //       group: "nodes",
-  //       position: event.position
-  //     };
-  //     cy.add(newNode);
-  //     this.createdNode = newNode;
-  //   } else if (target.isEdge()) {
-  //     cy.remove(target);
-  //   } else if (target.isNode()) {
-  //     this.createdNode = target;
-  //   }
-  // };
+  private handleTap = (event: any): void => {
+    console.log("handleTap", event.type);
+    const { target } = event;
+    // const id = Math.round(Math.random() * 100000);
+    console.log(target);
 
-  private handleDrag = (event: any) => {
-    console.log("handleGrab", event.type, this.nearestNode);
-    const { target, type } = event;
-    const cy = this.cy;
-
-    if (type === "free") {
-      cy.removeListener("tapdrag");
-      // target.style({ "background-color": "gray" });
-      if (this.nearestNode) {
-        // this.nearestNode.style({ "background-color": "gray" });
-      }
-
+    if (target === this.cy) {
       return;
     }
 
-    // target.style({ "background-color": "cornflowerblue" });
-    let handled = false;
-    const nodes = cy.nodes();
-
-    const nearestNodeFrom = (p: any, max = 20) => {
-      nodes.forEach((n: any) => {
-        const p1 = n.position();
-        const distance = Math.sqrt(
-          Math.pow(p1.x - p.x, 2) + Math.pow(p1.y - p.y, 2)
-        );
-        n.data("distance", distance); // TODO: n.scratch
-      });
-
-      const { ele } = nodes
-        .filter((n: any) => n.id() !== target.id())
-        .filter(`[distance < '${max}']`)
-        .min((n: any) => n.data("distance"));
-
-      return ele;
-    };
-
-    cy.on("tapdrag", (evt: any) => {
-      const tryNearestNode = nearestNodeFrom(evt.position);
-      if (!tryNearestNode || handled) {
-        return;
-      }
-
-      this.nearestNode = nearestNodeFrom(evt.position);
-      this.nearestNode.style({ "background-color": "cornflowerblue" });
-      handled = true;
-
-      const s = target.id();
-      const t = this.nearestNode.id();
-      const id = `${s}${t}`;
-      const edges = this.nearestNode.edgesWith(target);
-
-      if (edges.length) {
-        cy.remove(edges.shift());
-      } else {
-        cy.add({
-          data: { id, source: s, target: t },
-          group: "edges"
-        });
-      }
-    });
+    if (target.isNode()) {
+      const cy = this.cy;
+      const collection = cy
+        .elements()
+        .edgesWith(target)
+        .targets();
+      console.log(collection);
+      // cy.nodes().hidden = true;
+      cy.remove(collection);
+      target.restore();
+    }
   };
+
+  // private handleDrag = (event: any) => {
+  //   console.log("handleGrab", event.type, this.nearestNode);
+  //   const { target, type } = event;
+  //   const cy = this.cy;
+
+  //   if (type === "free") {
+  //     cy.removeListener("tapdrag");
+  //     // target.style({ "background-color": "gray" });
+  //     if (this.nearestNode) {
+  //       // this.nearestNode.style({ "background-color": "gray" });
+  //     }
+
+  //     return;
+  //   }
+
+  //   // target.style({ "background-color": "cornflowerblue" });
+  //   let handled = false;
+  //   const nodes = cy.nodes();
+
+  //   const nearestNodeFrom = (p: any, max = 20) => {
+  //     nodes.forEach((n: any) => {
+  //       const p1 = n.position();
+  //       const distance = Math.sqrt(
+  //         Math.pow(p1.x - p.x, 2) + Math.pow(p1.y - p.y, 2)
+  //       );
+  //       n.data("distance", distance); // TODO: n.scratch
+  //     });
+
+  //     const { ele } = nodes
+  //       .filter((n: any) => n.id() !== target.id())
+  //       .filter(`[distance < '${max}']`)
+  //       .min((n: any) => n.data("distance"));
+
+  //     return ele;
+  //   };
+
+  //   cy.on("tapdrag", (evt: any) => {
+  //     const tryNearestNode = nearestNodeFrom(evt.position);
+  //     if (!tryNearestNode || handled) {
+  //       return;
+  //     }
+
+  //     this.nearestNode = nearestNodeFrom(evt.position);
+  //     this.nearestNode.style({ "background-color": "cornflowerblue" });
+  //     handled = true;
+
+  //     const s = target.id();
+  //     const t = this.nearestNode.id();
+  //     const id = `${s}${t}`;
+  //     const edges = this.nearestNode.edgesWith(target);
+
+  //     if (edges.length) {
+  //       cy.remove(edges.shift());
+  //     } else {
+  //       cy.add({
+  //         data: { id, source: s, target: t },
+  //         group: "edges"
+  //       });
+  //     }
+  //   });
+  // };
 }
 
 export default Graph;
