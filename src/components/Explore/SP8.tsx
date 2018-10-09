@@ -66,18 +66,18 @@ const style: cytoscape.CssStyleDeclaration = [
       "font-size": "24px",
       "font-weight": "bold",
       height: "88px",
-      "padding": "10px",
+      padding: "10px",
       "text-background-opacity": 0,
       "text-halign": "center",
       "text-valign": "center",
-      
+
       width: "88px"
     }
   },
   {
     selector: "node[level = 1]",
     style: {
-      "background-color": "#068587",
+      "background-color": "#068587"
     }
   },
   {
@@ -258,6 +258,7 @@ class Graph extends Component<any> {
   private cyRef: any;
   private tapped = false;
   private collection: any;
+  private location: any;
 
   public componentDidMount() {
     const nodes: any = [];
@@ -329,8 +330,6 @@ class Graph extends Component<any> {
           level = 9;
         }
 
-    
-
         // const parentNode = nodes.filter((n: any) => {
         //   const row1 = n.data.data;
         //   const path = Object.keys(row1).map(key1 => makeId(row1[key1]));
@@ -340,7 +339,6 @@ class Graph extends Component<any> {
 
         //   return false;
         // })
-
 
         let type: string | undefined = row.Type;
         if (Object.keys(computedRow).length - 1 !== i) {
@@ -366,10 +364,6 @@ class Graph extends Component<any> {
 
         nodes.push(node);
       });
-
-      console.log(
-        nodes.map((n: any) => ({ name: n.data.label, level: n.data.level }))
-      );
     });
 
     // Build edges
@@ -394,7 +388,6 @@ class Graph extends Component<any> {
         }
 
         const node1 = nodes.find((n: any) => n.data.id === id);
-        // console.log(node1.data.level);
 
         edges.push({
           data: {
@@ -404,7 +397,6 @@ class Graph extends Component<any> {
             target: id2
           }
         });
-        // console.log(edges)
       });
     });
 
@@ -425,6 +417,12 @@ class Graph extends Component<any> {
     this.cy = cy;
     cy.on("tap", (evt: any) => {
       this.handleTap(evt);
+    });
+    cy.on("grabon", (evt: any) => {
+      this.handleDrag(evt);
+    });
+    cy.on("free", (evt: any) => {
+      this.handleDrag(evt);
     });
   }
 
@@ -478,67 +476,43 @@ class Graph extends Component<any> {
     }
   };
 
-  // private handleDrag = (event: any) => {
-  //   console.log("handleGrab", event.type, this.nearestNode);
-  //   const { target, type } = event;
-  //   const cy = this.cy;
+  private handleDrag = (event: any) => {
+    console.log("handleGrab", event.type);
+    const { target, type } = event;
 
-  //   if (type === "free") {
-  //     cy.removeListener("tapdrag");
-  //     // target.style({ "background-color": "gray" });
-  //     if (this.nearestNode) {
-  //       // this.nearestNode.style({ "background-color": "gray" });
-  //     }
+    const cy = this.cy;
 
-  //     return;
-  //   }
+    if (type === "free") {
+      cy.removeListener("tapdrag");
 
-  //   // target.style({ "background-color": "cornflowerblue" });
-  //   let handled = false;
-  //   const nodes = cy.nodes();
+      return;
+    }
 
-  //   const nearestNodeFrom = (p: any, max = 20) => {
-  //     nodes.forEach((n: any) => {
-  //       const p1 = n.position();
-  //       const distance = Math.sqrt(
-  //         Math.pow(p1.x - p.x, 2) + Math.pow(p1.y - p.y, 2)
-  //       );
-  //       n.data("distance", distance); // TODO: n.scratch
-  //     });
+    if (target === this.cy) {
+      return;
+    }
 
-  //     const { ele } = nodes
-  //       .filter((n: any) => n.id() !== target.id())
-  //       .filter(`[distance < '${max}']`)
-  //       .min((n: any) => n.data("distance"));
+    this.location = event.position;
+    const collection = target.successors();
+    collection.map((c:any) => {
+      c.scratch()._x = c.position().x
+      c.scratch()._y = c.position().y
 
-  //     return ele;
-  //   };
+      return c;
+    })
 
-  //   cy.on("tapdrag", (evt: any) => {
-  //     const tryNearestNode = nearestNodeFrom(evt.position);
-  //     if (!tryNearestNode || handled) {
-  //       return;
-  //     }
+    cy.on("tapdrag", (evt: any) => {
+      const moveX = evt.position.x - this.location.x;
+      const moveY = evt.position.y - this.location.y;
 
-  //     this.nearestNode = nearestNodeFrom(evt.position);
-  //     this.nearestNode.style({ "background-color": "cornflowerblue" });
-  //     handled = true;
+      collection.positions((c: any) => {
+        const x = c.scratch()._x + moveX;
+        const y = c.scratch()._y + moveY;
 
-  //     const s = target.id();
-  //     const t = this.nearestNode.id();
-  //     const id = `${s}${t}`;
-  //     const edges = this.nearestNode.edgesWith(target);
-
-  //     if (edges.length) {
-  //       cy.remove(edges.shift());
-  //     } else {
-  //       cy.add({
-  //         data: { id, source: s, target: t },
-  //         group: "edges"
-  //       });
-  //     }
-  //   });
-  // };
+        return { x, y };
+      });
+    });
+  };
 }
 
 export default Graph;
