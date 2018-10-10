@@ -369,7 +369,7 @@ class Graph extends Component<any> {
     nodes.forEach((node: any) => {
       const data1 = node.data.data;
       const values = Object.keys(data1)
-        .slice(0, 4)
+        .slice(0, 5)
         .map(k => data1[k]);
 
       values.forEach((v, j) => {
@@ -470,8 +470,13 @@ class Graph extends Component<any> {
       if (foldedNode) {
         if (foldedNode.folded) {
           foldedNode.collection.restore();
-          const index = this.foldedNodes.indexOf(foldedNode);
-          this.foldedNodes.splice(index, 1);
+
+          if (target.id() === "SP8") {
+            this.foldedNodes = [];
+          } else {
+            const index = this.foldedNodes.indexOf(foldedNode);
+            this.foldedNodes.splice(index, 1);
+          }
         }
       } else {
         let collection: any[];
