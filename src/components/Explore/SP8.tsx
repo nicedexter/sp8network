@@ -195,7 +195,7 @@ const layout = {
   animate: false,
   componentSpacing: 100,
   coolingFactor: 0.95,
-  edgeElasticity: 100,
+  edgeElasticity: 50,
   fit: true,
   gravity: 1,
   idealEdgeLength: 100,
@@ -203,7 +203,7 @@ const layout = {
   minTemp: 1.0,
   name: "cose",
   nestingFactor: 5,
-  nodeOverlap: 20,
+  nodeOverlap: 10,
   nodeRepulsion: 400000,
   numIter: 1000,
   padding: 10,
@@ -238,7 +238,7 @@ const layout = {
 //   // Node repulsion (non overlapping) multiplier
 //   nodeRepulsion: 105000,
 //   // Maximum number of iterations to perform
-//   numIter: 10000,
+//   numIter: 1000,
 //   // Padding on fit
 //   padding: 10,
 //   // Whether to enable incremental mode
@@ -256,9 +256,8 @@ const layout = {
 class Graph extends Component<any> {
   private cy: any;
   private cyRef: any;
-  private tapped = false;
-  private collection: any;
-  private location: any;
+  private foldedNodes: any[] = [];
+  private currentLocation: any;
 
   public componentDidMount() {
     const nodes: any = [];
@@ -455,7 +454,7 @@ class Graph extends Component<any> {
   };
 
   private handleTap = (event: any): void => {
-    console.log("handleTap", event.type, "this.tapped", this.tapped);
+    console.log("handleTap", event.type);
     const { target } = event;
 
     if (target === this.cy) {
@@ -463,21 +462,56 @@ class Graph extends Component<any> {
     }
 
     if (target.isNode()) {
-      if (!this.tapped) {
-        this.tapped = true;
-        const cy = this.cy;
-        this.collection = target.successors();
-        cy.remove(this.collection);
-        target.restore();
+      const cy = this.cy;
+
+      const foldedNode = this.foldedNodes.find(
+        f => f.target.id() === target.id()
+      );
+      if (foldedNode) {
+        if (foldedNode.folded) {
+          foldedNode.collection.restore();
+          const index = this.foldedNodes.indexOf(foldedNode);
+          this.foldedNodes.splice(index, 1);
+        }
       } else {
-        this.collection.restore();
-        this.tapped = false;
+        let collection: any[];
+
+        // display only top nodes
+        if (target.id() === "SP8") {
+          const closeNodes = target
+            .connectedEdges()
+            .union(target.connectedEdges().connectedNodes());
+
+          // store all elements in collection
+          cy.elements().forEach((node: any) => {
+            this.foldedNodes.push({
+              collection: node.successors(),
+              folded: true,
+              target: node
+            });
+          });
+
+          collection = cy.elements().difference(closeNodes);
+        } else {
+          collection = target.successors();
+        }
+
+        this.foldedNodes.push({
+          collection,
+          folded: true,
+          target
+        });
+
+        cy.remove(collection);
+        target.restore();
       }
     }
+
+    console.log(this.foldedNodes);
   };
 
   private handleDrag = (event: any) => {
-    console.log("handleGrab", event.type);
+    // console.log("handleGrab", event.type);
     const { target, type } = event;
 
     const cy = this.cy;
@@ -492,18 +526,18 @@ class Graph extends Component<any> {
       return;
     }
 
-    this.location = event.position;
+    this.currentLocation = event.position;
     const collection = target.successors();
-    collection.map((c:any) => {
-      c.scratch()._x = c.position().x
-      c.scratch()._y = c.position().y
+    collection.map((c: any) => {
+      c.scratch()._x = c.position().x;
+      c.scratch()._y = c.position().y;
 
       return c;
-    })
+    });
 
     cy.on("tapdrag", (evt: any) => {
-      const moveX = evt.position.x - this.location.x;
-      const moveY = evt.position.y - this.location.y;
+      const moveX = evt.position.x - this.currentLocation.x;
+      const moveY = evt.position.y - this.currentLocation.y;
 
       collection.positions((c: any) => {
         const x = c.scratch()._x + moveX;
