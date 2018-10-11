@@ -3,7 +3,7 @@ import cytoscape from "cytoscape";
 import coseBilkent from "cytoscape-cose-bilkent";
 import React, { Component } from "react";
 import ProcessData from "./ProcessData";
-import style from './Style'
+import style from "./Style";
 
 cytoscape.use(coseBilkent);
 
@@ -72,11 +72,11 @@ const layout = {
 class Graph extends Component<any> {
   private cy: any;
   private cyRef: any;
-  private foldedNodes: any[] = [];
+  private foldedNodesCollection: any[] = [];
   private currentLocation: any;
 
   public componentDidMount() {
-    const elements = ProcessData.run()
+    const elements = ProcessData.run();
     const cy = cytoscape({
       autounselectify: true,
       boxSelectionEnabled: false,
@@ -136,23 +136,15 @@ class Graph extends Component<any> {
 
     if (target.isNode()) {
       const cy = this.cy;
-
-      const foldedNode = this.foldedNodes.find(
-        f => f.target.id() === target.id()
+      const foldedNode = this.foldedNodesCollection.find(
+        n => n.target.id() === target.id()
       );
-      if (foldedNode) {
-        if (foldedNode.folded) {
-          foldedNode.collection.restore();
 
-          if (target.id() === "SP8") {
-            this.foldedNodes = [];
-          } else {
-            const index = this.foldedNodes.indexOf(foldedNode);
-            this.foldedNodes.splice(index, 1);
-          }
-        }
+      if (foldedNode && foldedNode.folded) {
+        foldedNode.collection.restore();
+        foldedNode.collection = [];
       } else {
-        let collection: any[];
+        let collection;
 
         // display only top nodes
         if (target.id() === "SP8") {
@@ -161,12 +153,12 @@ class Graph extends Component<any> {
             .union(target.connectedEdges().connectedNodes());
 
           // store all elements in collection
-          cy.elements().forEach((node: any) => {
-            this.foldedNodes.push({
-              collection: node.successors(),
-              folded: true,
-              target: node
-            });
+          this.foldedNodesCollection.push({
+            collection: target
+              .successors()
+              .union(target.successors().connectedEdges()),
+            folded: true,
+            target
           });
 
           collection = cy.elements().difference(closeNodes);
@@ -174,12 +166,11 @@ class Graph extends Component<any> {
           collection = target.successors();
         }
 
-        this.foldedNodes.push({
+        this.foldedNodesCollection.push({
           collection,
           folded: true,
           target
         });
-
         cy.remove(collection);
         target.restore();
       }

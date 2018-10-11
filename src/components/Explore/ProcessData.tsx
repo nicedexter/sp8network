@@ -23,31 +23,36 @@ class ProcessData {
           return;
         }
 
-        let level = 1;
+        let level;
+        const level2 = row["Niveau 2"];
         const level3 = row["Niveau 3"];
+        const level4 = row["Niveau 4"];
 
-        if (level3 === "EpiCARE") {
+        // EPILEPSY
+        if (level2 === "EPILEPSY") {
           level = 1;
         }
 
-        if (level3 === "CENTER TBI") {
+        if (level3 === "E-PILEPSY") {
           level = 2;
         }
 
-        if (level3 === "CREACTIVE") {
+        if (level4 === "COLLABORATIVE CENTRES") {
           level = 3;
+        }
+
+        if (level3 === "EpiCARE") {
+          level = 4;
         }
 
         if (
           level3 ===
           "WP8.8 and 8.10 : Federated analysis of human intracerebral stimulation and recording data"
         ) {
-          level = 4;
-        }
-
-        if (row["Niveau 2"] === "SGA1 Partnering Hospitals") {
           level = 5;
         }
+
+        // PSYCHATRIC DISORDERS
 
         if (
           level3 ===
@@ -56,20 +61,66 @@ class ProcessData {
           level = 6;
         }
 
-        if (level3 === "ERN - RND") {
+        // TRAUMATIC BRAIN INJURIES
+
+        if (level3 === "CENTER TBI") {
           level = 7;
         }
 
-        if (row["Niveau 2"] === "MIP DATA GOVERNANCE STEERING COMMITTEE") {
+        if (level3 === "CREACTIVE") {
           level = 8;
+        }
+
+        // DEMENTIA
+
+        if (level2 === "dementia") {
+          level = 90;
+        }
+
+        if (level3 === "ERN - RND") {
+          level = 9;
         }
 
         if (
           level3 ===
           "WP8.7TVB � NDD - Testing pathophysiological models of brain diseases"
         ) {
-          level = 9;
+          level = 10;
         }
+
+
+        if (level3 === "SGA1 Partnering Hospitals") {
+          level = 11;
+        }
+
+        if (level2 === "MIP DATA GOVERNANCE STEERING COMMITTEE") {
+          level = 12;
+        }
+
+
+
+        if (
+          level2 ===
+          "OTHER INTERACTIONS"        ) {
+          level = 13;
+        }
+
+        if (
+          level2 ===
+          "ONTOLOGIES"        ) {
+          level = 14;
+        }
+
+        // if (level3 === "ERN - RND") {
+        //   level = 7;
+        // }
+
+        // if (
+        //   level3 ===
+        //   "WP8.7TVB � NDD - Testing pathophysiological models of brain diseases"
+        // ) {
+        //   level = 9;
+        // }
 
         // const parentNode = nodes.filter((n: any) => {
         //   const row1 = n.data.data;

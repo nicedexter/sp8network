@@ -52,7 +52,7 @@ export default [
     "Niveau 2": "EPILEPSY",
     "Niveau 3": "E-PILEPSY",
     "Niveau 4": "COLLABORATIVE CENTRES",
-    "Niveau 5": "Vilnius University Hospital Santar�ki? Klinikos",
+    "Niveau 5": "Vilnius University Hospital Santar?ki? Klinikos",
     "Type": "HOSPITAL"
   },
   {
@@ -1059,7 +1059,95 @@ export default [
     "Niveau 1": "SP8",
     "Niveau 2": "MIP DATA GOVERNANCE STEERING COMMITTEE",
     "Niveau 3": "EFNA",
-    "Niveau 4": "",
+    "Niveau 4": "European Alliance for Access to Safe Medicines [EAASM]",
+    "Niveau 5": "",
+    "Type": "EXT"
+  },
+  {
+    "Niveau 1": "SP8",
+    "Niveau 2": "MIP DATA GOVERNANCE STEERING COMMITTEE",
+    "Niveau 3": "EFNA",
+    "Niveau 4": "Europa-Bio Patients Bio-Forum",
+    "Niveau 5": "",
+    "Type": "EXT"
+  },
+  {
+    "Niveau 1": "SP8",
+    "Niveau 2": "MIP DATA GOVERNANCE STEERING COMMITTEE",
+    "Niveau 3": "EFNA",
+    "Niveau 4": "European Brain Council [EBC]",
+    "Niveau 5": "",
+    "Type": "EXT"
+  },
+  {
+    "Niveau 1": "SP8",
+    "Niveau 2": "MIP DATA GOVERNANCE STEERING COMMITTEE",
+    "Niveau 3": "EFNA",
+    "Niveau 4": "European Patients Forum [EPF]",
+    "Niveau 5": "",
+    "Type": "EXT"
+  },
+  {
+    "Niveau 1": "SP8",
+    "Niveau 2": "MIP DATA GOVERNANCE STEERING COMMITTEE",
+    "Niveau 3": "EFNA",
+    "Niveau 4": "European Academy of Neurology (EAN)",
+    "Niveau 5": "",
+    "Type": "EXT"
+  },
+  {
+    "Niveau 1": "SP8",
+    "Niveau 2": "MIP DATA GOVERNANCE STEERING COMMITTEE",
+    "Niveau 3": "EFNA",
+    "Niveau 4": "Patients and Consumer Working Party at the European Medicines Agency [PCWP]",
+    "Niveau 5": "",
+    "Type": "EXT"
+  },
+  {
+    "Niveau 1": "SP8",
+    "Niveau 2": "MIP DATA GOVERNANCE STEERING COMMITTEE",
+    "Niveau 3": "EFNA",
+    "Niveau 4": "Think-Tank at the European Federation for Pharmaceutical Industry Associations",
+    "Niveau 5": "",
+    "Type": "EXT"
+  },
+  {
+    "Niveau 1": "SP8",
+    "Niveau 2": "MIP DATA GOVERNANCE STEERING COMMITTEE",
+    "Niveau 3": "EFNA",
+    "Niveau 4": "European Society of Radiology � Patient Advisory Group [ESR-PAG]",
+    "Niveau 5": "",
+    "Type": "EXT"
+  },
+  {
+    "Niveau 1": "SP8",
+    "Niveau 2": "MIP DATA GOVERNANCE STEERING COMMITTEE",
+    "Niveau 3": "EFNA",
+    "Niveau 4": "Medicines for Europe",
+    "Niveau 5": "",
+    "Type": "EXT"
+  },
+  {
+    "Niveau 1": "SP8",
+    "Niveau 2": "MIP DATA GOVERNANCE STEERING COMMITTEE",
+    "Niveau 3": "EFNA",
+    "Niveau 4": "Societal Impact of Pain Platform",
+    "Niveau 5": "",
+    "Type": "EXT"
+  },
+  {
+    "Niveau 1": "SP8",
+    "Niveau 2": "MIP DATA GOVERNANCE STEERING COMMITTEE",
+    "Niveau 3": "EFNA",
+    "Niveau 4": "NeuroPozytywni",
+    "Niveau 5": "",
+    "Type": "EXT"
+  },
+  {
+    "Niveau 1": "SP8",
+    "Niveau 2": "MIP DATA GOVERNANCE STEERING COMMITTEE",
+    "Niveau 3": "EFNA",
+    "Niveau 4": "Neuroalianza",
     "Niveau 5": "",
     "Type": "EXT"
   },
@@ -1158,53 +1246,5 @@ export default [
     "Niveau 4": "EDSD",
     "Niveau 5": "",
     "Type": "DATA"
-  },
-  {
-    "Niveau 1": "SP8",
-    "Niveau 2": "",
-    "Niveau 3": "",
-    "Niveau 4": "",
-    "Niveau 5": "",
-    "Type": ""
-  },
-  {
-    "Niveau 1": "SP8",
-    "Niveau 2": "",
-    "Niveau 3": "",
-    "Niveau 4": "",
-    "Niveau 5": "",
-    "Type": ""
-  },
-  {
-    "Niveau 1": "SP8",
-    "Niveau 2": "",
-    "Niveau 3": "",
-    "Niveau 4": "",
-    "Niveau 5": "",
-    "Type": ""
-  },
-  {
-    "Niveau 1": "SP8",
-    "Niveau 2": "",
-    "Niveau 3": "",
-    "Niveau 4": "",
-    "Niveau 5": "",
-    "Type": ""
-  },
-  {
-    "Niveau 1": "SP8",
-    "Niveau 2": "",
-    "Niveau 3": "",
-    "Niveau 4": "",
-    "Niveau 5": "",
-    "Type": ""
-  },
-  {
-    "Niveau 1": "SP8",
-    "Niveau 2": "",
-    "Niveau 3": "",
-    "Niveau 4": "",
-    "Niveau 5": "",
-    "Type": ""
   }
 ]
