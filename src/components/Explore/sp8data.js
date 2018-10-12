@@ -1,6 +1,38 @@
 export default [
   {
     "Niveau 1": "SP8",
+    "Niveau 2": "",
+    "Niveau 3": "",
+    "Niveau 4": "",
+    "Niveau 5": "",
+    "Type": ""
+  },
+  {
+    "Niveau 1": "SP8",
+    "Niveau 2": "EPILEPSY",
+    "Niveau 3": "",
+    "Niveau 4": "",
+    "Niveau 5": "",
+    "Type": ""
+  },
+  {
+    "Niveau 1": "SP8",
+    "Niveau 2": "EPILEPSY",
+    "Niveau 3": "E-PILEPSY",
+    "Niveau 4": "",
+    "Niveau 5": "",
+    "Type": ""
+  },
+  {
+    "Niveau 1": "SP8",
+    "Niveau 2": "EPILEPSY",
+    "Niveau 3": "E-PILEPSY",
+    "Niveau 4": "COLLABORATIVE CENTRES",
+    "Niveau 5": "",
+    "Type": ""
+  },
+  {
+    "Niveau 1": "SP8",
     "Niveau 2": "EPILEPSY",
     "Niveau 3": "E-PILEPSY",
     "Niveau 4": "COLLABORATIVE CENTRES",
@@ -52,7 +84,7 @@ export default [
     "Niveau 2": "EPILEPSY",
     "Niveau 3": "E-PILEPSY",
     "Niveau 4": "COLLABORATIVE CENTRES",
-    "Niveau 5": "Vilnius University Hospital Santar?ki? Klinikos",
+    "Niveau 5": "Vilnius University Hospital Santarškių Klinikos",
     "Type": "HOSPITAL"
   },
   {
@@ -92,7 +124,7 @@ export default [
     "Niveau 2": "EPILEPSY",
     "Niveau 3": "E-PILEPSY",
     "Niveau 4": "COLLABORATIVE CENTRES",
-    "Niveau 5": "Klinik Eletrofizyoloji BD, N�roloji ABD",
+    "Niveau 5": "Klinik Eletrofizyoloji BD, Nöroloji ABD",
     "Type": "HOSPITAL"
   },
   {
@@ -155,7 +187,7 @@ export default [
     "Niveau 1": "SP8",
     "Niveau 2": "EPILEPSY",
     "Niveau 3": "E-PILEPSY",
-    "Niveau 4": "UNIVERSIT�TS KLINIKUMBONN",
+    "Niveau 4": "UNIVERSITÄTS KLINIKUMBONN",
     "Niveau 5": "",
     "Type": "HOSPITAL"
   },
@@ -214,6 +246,14 @@ export default [
     "Niveau 4": "CHARLES UNIVERSITY PRAGUE",
     "Niveau 5": "",
     "Type": "UNI"
+  },
+  {
+    "Niveau 1": "SP8",
+    "Niveau 2": "EPILEPSY",
+    "Niveau 3": "EpiCARE",
+    "Niveau 4": "",
+    "Niveau 5": "",
+    "Type": ""
   },
   {
     "Niveau 1": "SP8",
@@ -403,7 +443,7 @@ export default [
     "Niveau 1": "SP8",
     "Niveau 2": "EPILEPSY",
     "Niveau 3": "EpiCARE",
-    "Niveau 4": "Hospital Cl�nic-Hospital Sant Joan de Deu",
+    "Niveau 4": "Hospital Clínic-Hospital Sant Joan de Deu",
     "Niveau 5": "",
     "Type": "HOSPITAL"
   },
@@ -430,6 +470,14 @@ export default [
     "Niveau 4": "Sahlgrenska University Hospital",
     "Niveau 5": "",
     "Type": "HOSPITAL"
+  },
+  {
+    "Niveau 1": "SP8",
+    "Niveau 2": "EPILEPSY",
+    "Niveau 3": "WP8.8 and 8.10 : Federated analysis of human intracerebral stimulation and recording data",
+    "Niveau 4": "",
+    "Niveau 5": "",
+    "Type": ""
   },
   {
     "Niveau 1": "SP8",
@@ -503,6 +551,14 @@ export default [
     "Niveau 5": "",
     "Type": "UNI"
   },
+  // {
+  //   "Niveau 1": "SP8",
+  //   "Niveau 2": "PSYCHIATRIC DISORDERS",
+  //   "Niveau 3": "",
+  //   "Niveau 4": "",
+  //   "Niveau 5": "",
+  //   "Type": ""
+  // },
   {
     "Niveau 1": "SP8",
     "Niveau 2": "PSYCHIATRIC DISORDERS",
@@ -518,6 +574,22 @@ export default [
     "Niveau 4": "UKAachen",
     "Niveau 5": "",
     "Type": "UNI"
+  },
+  {
+    "Niveau 1": "SP8",
+    "Niveau 2": "TRAUMATIC BRAIN INJURIES",
+    "Niveau 3": "",
+    "Niveau 4": "",
+    "Niveau 5": "",
+    "Type": ""
+  },
+  {
+    "Niveau 1": "SP8",
+    "Niveau 2": "TRAUMATIC BRAIN INJURIES",
+    "Niveau 3": "CENTER TBI",
+    "Niveau 4": "",
+    "Niveau 5": "",
+    "Type": ""
   },
   {
     "Niveau 1": "SP8",
@@ -547,7 +619,7 @@ export default [
     "Niveau 1": "SP8",
     "Niveau 2": "TRAUMATIC BRAIN INJURIES",
     "Niveau 3": "CENTER TBI",
-    "Niveau 4": "Universit�tsmedizin G�ttingen",
+    "Niveau 4": "Universitätsmedizin Göttingen",
     "Niveau 5": "",
     "Type": "HOSPITAL"
   },
@@ -643,7 +715,7 @@ export default [
     "Niveau 1": "SP8",
     "Niveau 2": "TRAUMATIC BRAIN INJURIES",
     "Niveau 3": "CENTER TBI",
-    "Niveau 4": "Assistance Publique - Hopitaux de Paris, Groupe Hospitalier Piti�-Salp�tri�re",
+    "Niveau 4": "Assistance Publique - Hopitaux de Paris, Groupe Hospitalier Pitié-Salpêtrière",
     "Niveau 5": "",
     "Type": "HOSPITAL"
   },
@@ -651,6 +723,14 @@ export default [
     "Niveau 1": "SP8",
     "Niveau 2": "TRAUMATIC BRAIN INJURIES",
     "Niveau 3": "CREACTIVE",
+    "Niveau 4": "",
+    "Niveau 5": "",
+    "Type": ""
+  },
+  {
+    "Niveau 1": "SP8",
+    "Niveau 2": "TRAUMATIC BRAIN INJURIES",
+    "Niveau 3": "CREACTIVE",
     "Niveau 4": "Institue Mario Negri",
     "Niveau 5": "...",
     "Type": "HOSPITAL"
@@ -838,6 +918,22 @@ export default [
     "Niveau 4": "Panepistimiako Geniko\nNosokomeio Irakleiou",
     "Niveau 5": "...",
     "Type": "HOSPITAL"
+  },
+  {
+    "Niveau 1": "SP8",
+    "Niveau 2": "DEMENTIA",
+    "Niveau 3": "",
+    "Niveau 4": "",
+    "Niveau 5": "",
+    "Type": ""
+  },
+  {
+    "Niveau 1": "SP8",
+    "Niveau 2": "DEMENTIA",
+    "Niveau 3": "ERN - RND",
+    "Niveau 4": "",
+    "Niveau 5": "",
+    "Type": ""
   },
   {
     "Niveau 1": "SP8",
@@ -851,7 +947,7 @@ export default [
     "Niveau 1": "SP8",
     "Niveau 2": "DEMENTIA",
     "Niveau 3": "ERN - RND",
-    "Niveau 4": "Assistance Publique-H�pitaux de Paris, H�pital Piti�-Salep�tri�re",
+    "Niveau 4": "Assistance Publique-Hôpitaux de Paris, Hôpital Pitié-Salepétrière",
     "Niveau 5": "",
     "Type": "HOSPITAL"
   },
@@ -859,7 +955,7 @@ export default [
     "Niveau 1": "SP8",
     "Niveau 2": "DEMENTIA",
     "Niveau 3": "ERN - RND",
-    "Niveau 4": "Universit�tsklinikum T�bingen",
+    "Niveau 4": "Universitätsklinikum Tübingen",
     "Niveau 5": "",
     "Type": "HOSPITAL"
   },
@@ -867,7 +963,7 @@ export default [
     "Niveau 1": "SP8",
     "Niveau 2": "DEMENTIA",
     "Niveau 3": "ERN - RND",
-    "Niveau 4": "Klinikum der Universit�t M�nchen",
+    "Niveau 4": "Klinikum der Universität München",
     "Niveau 5": "",
     "Type": "HOSPITAL"
   },
@@ -875,7 +971,7 @@ export default [
     "Niveau 1": "SP8",
     "Niveau 2": "DEMENTIA",
     "Niveau 3": "ERN - RND",
-    "Niveau 4": "Universit�tsklinikum Ulm",
+    "Niveau 4": "Universitätsklinikum Ulm",
     "Niveau 5": "",
     "Type": "HOSPITAL"
   },
@@ -891,7 +987,7 @@ export default [
     "Niveau 1": "SP8",
     "Niveau 2": "DEMENTIA",
     "Niveau 3": "ERN - RND",
-    "Niveau 4": "University of P�cs",
+    "Niveau 4": "University of Pécs",
     "Niveau 5": "",
     "Type": "HOSPITAL"
   },
@@ -946,7 +1042,7 @@ export default [
   {
     "Niveau 1": "SP8",
     "Niveau 2": "DEMENTIA",
-    "Niveau 3": "WP8.7TVB � NDD - Testing pathophysiological models of brain diseases",
+    "Niveau 3": "WP8.7TVB – NDD - Testing pathophysiological models of brain diseases",
     "Niveau 4": "Charite Hospital Berlin",
     "Niveau 5": "",
     "Type": "HOSPITAL"
@@ -954,7 +1050,7 @@ export default [
   {
     "Niveau 1": "SP8",
     "Niveau 2": "DEMENTIA",
-    "Niveau 3": "WP8.7TVB � NDD - Testing pathophysiological models of brain diseases",
+    "Niveau 3": "WP8.7TVB – NDD - Testing pathophysiological models of brain diseases",
     "Niveau 4": "AMU",
     "Niveau 5": "",
     "Type": "HOSPITAL"
@@ -962,7 +1058,7 @@ export default [
   {
     "Niveau 1": "SP8",
     "Niveau 2": "DEMENTIA",
-    "Niveau 3": "WP8.7TVB � NDD - Testing pathophysiological models of brain diseases",
+    "Niveau 3": "WP8.7TVB – NDD - Testing pathophysiological models of brain diseases",
     "Niveau 4": "UMG",
     "Niveau 5": "",
     "Type": "HOSPITAL"
@@ -970,10 +1066,18 @@ export default [
   {
     "Niveau 1": "SP8",
     "Niveau 2": "DEMENTIA",
-    "Niveau 3": "WP8.7TVB � NDD - Testing pathophysiological models of brain diseases",
-    "Niveau 4": "�",
+    "Niveau 3": "WP8.7TVB – NDD - Testing pathophysiological models of brain diseases",
+    "Niveau 4": "…",
     "Niveau 5": "",
     "Type": "HOSPITAL"
+  },
+  {
+    "Niveau 1": "SP8",
+    "Niveau 2": "DEMENTIA",
+    "Niveau 3": "SGA1 Partnering Hospitals",
+    "Niveau 4": "",
+    "Niveau 5": "",
+    "Type": ""
   },
   {
     "Niveau 1": "SP8",
@@ -1030,6 +1134,14 @@ export default [
     "Niveau 4": "CHUV Lausanne Hospital",
     "Niveau 5": "",
     "Type": "HOSPITAL"
+  },
+  {
+    "Niveau 1": "SP8",
+    "Niveau 2": "MIP DATA GOVERNANCE STEERING COMMITTEE",
+    "Niveau 3": "",
+    "Niveau 4": "",
+    "Niveau 5": "",
+    "Type": ""
   },
   {
     "Niveau 1": "SP8",
@@ -1115,7 +1227,7 @@ export default [
     "Niveau 1": "SP8",
     "Niveau 2": "MIP DATA GOVERNANCE STEERING COMMITTEE",
     "Niveau 3": "EFNA",
-    "Niveau 4": "European Society of Radiology � Patient Advisory Group [ESR-PAG]",
+    "Niveau 4": "European Society of Radiology – Patient Advisory Group [ESR-PAG]",
     "Niveau 5": "",
     "Type": "EXT"
   },
@@ -1186,6 +1298,14 @@ export default [
   {
     "Niveau 1": "SP8",
     "Niveau 2": "ONTOLOGIES",
+    "Niveau 3": "",
+    "Niveau 4": "",
+    "Niveau 5": "",
+    "Type": ""
+  },
+  {
+    "Niveau 1": "SP8",
+    "Niveau 2": "ONTOLOGIES",
     "Niveau 3": "WP8.9 COMPREHENSIVE ONTOLOGIES",
     "Niveau 4": "",
     "Niveau 5": "",
@@ -1198,6 +1318,14 @@ export default [
     "Niveau 4": "",
     "Niveau 5": "",
     "Type": "HBP"
+  },
+  {
+    "Niveau 1": "SP8",
+    "Niveau 2": "OTHER INTERACTIONS",
+    "Niveau 3": "",
+    "Niveau 4": "",
+    "Niveau 5": "",
+    "Type": ""
   },
   {
     "Niveau 1": "SP8",
@@ -1230,6 +1358,14 @@ export default [
     "Niveau 4": "DATA GOVERNANCE AND PROTECTION",
     "Niveau 5": "",
     "Type": "HBP"
+  },
+  {
+    "Niveau 1": "SP8",
+    "Niveau 2": "DEMENTIA",
+    "Niveau 3": "",
+    "Niveau 4": "",
+    "Niveau 5": "",
+    "Type": ""
   },
   {
     "Niveau 1": "SP8",

@@ -1,7 +1,13 @@
+// tslint:disable:no-console
 import data from "./sp8data";
 
+interface IElement { 
+  nodes: any; 
+  edges: any; 
+}
+
 class ProcessData {
-  public static run() {
+  public static run(): IElement  {
     const nodes: any = [];
     const edges: any = [];
 
@@ -63,6 +69,10 @@ class ProcessData {
 
         // TRAUMATIC BRAIN INJURIES
 
+        if (level2 === "TRAUMATIC BRAIN INJURIES") {
+            level = 7;
+          }
+
         if (level3 === "CENTER TBI") {
           level = 7;
         }
@@ -73,7 +83,7 @@ class ProcessData {
 
         // DEMENTIA
 
-        if (level2 === "dementia") {
+        if (level2 === "DEMENTIA") {
           level = 90;
         }
 
@@ -97,6 +107,10 @@ class ProcessData {
           level = 12;
         }
 
+        if (level2 === "PSYCHIATRIC DISORDERS") {
+          level = 12;
+        }
+
 
 
         if (
@@ -110,27 +124,6 @@ class ProcessData {
           "ONTOLOGIES"        ) {
           level = 14;
         }
-
-        // if (level3 === "ERN - RND") {
-        //   level = 7;
-        // }
-
-        // if (
-        //   level3 ===
-        //   "WP8.7TVB � NDD - Testing pathophysiological models of brain diseases"
-        // ) {
-        //   level = 9;
-        // }
-
-        // const parentNode = nodes.filter((n: any) => {
-        //   const row1 = n.data.data;
-        //   const path = Object.keys(row1).map(key1 => makeId(row1[key1]));
-        //   if (path) {
-        //     return path.includes(id);
-        //   }
-
-        //   return false;
-        // })
 
         let type: string | undefined = row.Type;
         if (Object.keys(computedRow).length - 1 !== i) {
@@ -149,12 +142,14 @@ class ProcessData {
           }
         };
 
+        // console.log(`${val} - ${level}`)
         if (node.data.id === "SP8") {
           node.data.level = 0;
           node.data.weight = 100;
         }
 
         nodes.push(node);
+        // console.log(node.data.label, node.data.data)
       });
     });
 

@@ -72,7 +72,7 @@ const layout = {
 class Graph extends Component<any> {
   private cy: any;
   private cyRef: any;
-  private foldedNodesCollection: any[] = [];
+  private foldedNodes: any[] = [];
   private currentLocation: any;
 
   public componentDidMount() {
@@ -127,7 +127,7 @@ class Graph extends Component<any> {
   };
 
   private handleTap = (event: any): void => {
-    console.log("handleTap", event.type);
+    // console.log("handleTap", event.type);
     const { target } = event;
 
     if (target === this.cy) {
@@ -136,37 +136,30 @@ class Graph extends Component<any> {
 
     if (target.isNode()) {
       const cy = this.cy;
-      const foldedNode = this.foldedNodesCollection.find(
+      const touchedNode = this.foldedNodes.find(
         n => n.target.id() === target.id()
       );
+      const rootSelect = (target2: any) => cy.elements().difference(target2.connectedEdges().union(target2.connectedEdges().connectedNodes()))
 
-      if (foldedNode && foldedNode.folded) {
-        foldedNode.collection.restore();
-        foldedNode.collection = [];
-      } else {
-        let collection;
-
-        // display only top nodes
-        if (target.id() === "SP8") {
-          const closeNodes = target
-            .connectedEdges()
-            .union(target.connectedEdges().connectedNodes());
-
-          // store all elements in collection
-          this.foldedNodesCollection.push({
-            collection: target
-              .successors()
-              .union(target.successors().connectedEdges()),
-            folded: true,
-            target
-          });
-
-          collection = cy.elements().difference(closeNodes);
+      if (touchedNode) {
+        const index = this.foldedNodes.indexOf(touchedNode);
+        if (touchedNode.folded) {
+          touchedNode.collection.restore();
+          touchedNode.folded = false;
         } else {
-          collection = target.successors();
+          const collection = (target.id() === "SP8") ? 
+          rootSelect(target) : 
+          target.successors();
+          cy.remove(collection);
+          touchedNode.folded = true;
+          touchedNode.collection = collection;
+          target.restore();
         }
-
-        this.foldedNodesCollection.push({
+        this.foldedNodes.splice(index, 1, touchedNode);
+      } else {
+        const collection = (target.id() === "SP8") ? 
+        rootSelect(target) : target.successors();
+        this.foldedNodes.push({
           collection,
           folded: true,
           target
@@ -175,7 +168,6 @@ class Graph extends Component<any> {
         target.restore();
       }
     }
-
     // console.log(this.foldedNodes);
   };
 

@@ -1,8 +1,8 @@
 import cytoscape from "cytoscape";
-import iconHBP from "../../images/hbp.png";
+import iconHBP from "../../images/icon-hbp.png";
 import iconHospital from "../../images/icon-hospital.png";
-import iconExt from "../../images/logo_chuv.png";
-import iconUni from "../../images/university.png"
+import iconExt from "../../images/icon-world.png";
+import iconUni from "../../images/university.png";
 
 const style: cytoscape.CssStyleDeclaration = [
   {
@@ -76,13 +76,13 @@ const style: cytoscape.CssStyleDeclaration = [
   {
     selector: "node[level = 6]",
     style: {
-      "background-color": "#112F41"
+      "background-color": "#9CCF4A"
     }
   },
   {
     selector: "node[level = 7]",
     style: {
-      "background-color": "#068587"
+      "background-color": "#E89A0C"
     }
   },
   {
@@ -143,55 +143,97 @@ const style: cytoscape.CssStyleDeclaration = [
   {
     selector: "edge[level = 0]",
     style: {
-      "line-color": "#6B6A68"
+      "line-color": "purple"
     }
   },
   {
     selector: "edge[level = 1]",
     style: {
-      "line-color": "#068587"
+      "line-color": "#440DFF"
     }
   },
   {
     selector: "edge[level = 2]",
     style: {
-      "line-color": "#4FB99F"
+      "line-color": "#D40CE8"
     }
   },
   {
     selector: "edge[level = 3]",
     style: {
-      "line-color": "#F2B134"
+      "line-color": "#FF0600"
     }
   },
   {
     selector: "edge[level = 4]",
     style: {
-      "line-color": "#ED553B"
+      "line-color": "#E86715"
     }
   },
   {
     selector: "edge[level = 5]",
     style: {
-      "line-color": "#FF0000"
+      "line-color": "#FFBB1C"
     }
   },
   {
     selector: "edge[level = 6]",
     style: {
-      "line-color": "#0DFF20"
+      "line-color": "#9CCF4A"
     }
   },
   {
     selector: "edge[level = 7]",
     style: {
-      "line-color": "#4687E8"
+      "line-color": "#E89A0C"
     }
   },
   {
     selector: "edge[level = 8]",
     style: {
-      "line-color": "#E8C40E"
+      "line-color": "#4FB99F"
+    }
+  },
+  {
+    selector: "edge[level = 90]",
+    style: {
+      "line-color": "#F2B134"
+    }
+  },
+  {
+    selector: "edge[level = 9]",
+    style: {
+      "line-color": "#ED553B"
+    }
+  },
+  {
+    selector: "edge[level = 10]",
+    style: {
+      "line-color": "#ED553B"
+    }
+  },
+  {
+    selector: "edge[level = 11]",
+    style: {
+      "line-color": "#A7DDA7"
+    }
+  },
+  {
+    selector: "edge[level = 12]",
+    style: {
+      "line-color": "#78BE97"
+    }
+  },
+  {
+    selector: "edge[level = 13]",
+    style: {
+      "line-color": "#0B476D"
+    }
+  },
+  {
+    selector: "edge[level = 14]",
+    style: {
+      "line-color": "#E30AFF"
     }
   },
   {
