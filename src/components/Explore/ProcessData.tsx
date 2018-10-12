@@ -1,13 +1,13 @@
 // tslint:disable:no-console
 import data from "./sp8data";
 
-interface IElement { 
-  nodes: any; 
-  edges: any; 
+interface IElement {
+  nodes: any;
+  edges: any;
 }
 
 class ProcessData {
-  public static run(): IElement  {
+  public static run(): IElement {
     const nodes: any = [];
     const edges: any = [];
 
@@ -25,26 +25,41 @@ class ProcessData {
         const id = makeId(val);
 
         // node already exists
-        if (nodes.find((n: any) => n.data.id === id)) {
-          return;
-        }
+        // if (nodes.find((n: any) => n.data.id === id)) {
+        //   return;
+        // }
 
         let level;
         const level2 = row["Niveau 2"];
         const level3 = row["Niveau 3"];
         const level4 = row["Niveau 4"];
 
-        // EPILEPSY
         if (level2 === "EPILEPSY") {
           level = 1;
         }
 
-        if (level3 === "E-PILEPSY") {
-          level = 2;
+        if (level2 === "TRAUMATIC BRAIN INJURIES") {
+          level = 7;
         }
 
-        if (level4 === "COLLABORATIVE CENTRES") {
-          level = 3;
+        if (level2 === "DEMENTIA") {
+          level = 90;
+        }
+
+        if (level2 === "MIP DATA GOVERNANCE STEERING COMMITTEE") {
+          level = 12;
+        }
+
+        if (level2 === "PSYCHIATRIC DISORDERS") {
+          level = 12;
+        }
+
+        if (level2 === "OTHER INTERACTIONS") {
+          level = 13;
+        }
+
+        if (level2 === "ONTOLOGIES") {
+          level = 14;
         }
 
         if (level3 === "EpiCARE") {
@@ -58,8 +73,6 @@ class ProcessData {
           level = 5;
         }
 
-        // PSYCHATRIC DISORDERS
-
         if (
           level3 ===
           "WP8.8 and 8.10 : Federated analysis of human intracerebral stimulation and recording data"
@@ -67,24 +80,12 @@ class ProcessData {
           level = 6;
         }
 
-        // TRAUMATIC BRAIN INJURIES
-
-        if (level2 === "TRAUMATIC BRAIN INJURIES") {
-            level = 7;
-          }
-
         if (level3 === "CENTER TBI") {
           level = 7;
         }
 
         if (level3 === "CREACTIVE") {
           level = 8;
-        }
-
-        // DEMENTIA
-
-        if (level2 === "DEMENTIA") {
-          level = 90;
         }
 
         if (level3 === "ERN - RND") {
@@ -98,31 +99,16 @@ class ProcessData {
           level = 10;
         }
 
-
         if (level3 === "SGA1 Partnering Hospitals") {
           level = 11;
         }
 
-        if (level2 === "MIP DATA GOVERNANCE STEERING COMMITTEE") {
-          level = 12;
+        if (level4 === "E-PILEPSY (Not full member of EpiCARE)") {
+          level = 2;
         }
 
-        if (level2 === "PSYCHIATRIC DISORDERS") {
-          level = 12;
-        }
-
-
-
-        if (
-          level2 ===
-          "OTHER INTERACTIONS"        ) {
-          level = 13;
-        }
-
-        if (
-          level2 ===
-          "ONTOLOGIES"        ) {
-          level = 14;
+        if (level4 === "COLLABORATIVE CENTRES") {
+          level = 3;
         }
 
         let type: string | undefined = row.Type;

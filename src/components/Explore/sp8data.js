@@ -18,7 +18,7 @@ export default [
   {
     "Niveau 1": "SP8",
     "Niveau 2": "EPILEPSY",
-    "Niveau 3": "E-PILEPSY",
+    "Niveau 3": "EpiCARE",
     "Niveau 4": "",
     "Niveau 5": "",
     "Type": ""
@@ -26,135 +26,175 @@ export default [
   {
     "Niveau 1": "SP8",
     "Niveau 2": "EPILEPSY",
-    "Niveau 3": "E-PILEPSY",
-    "Niveau 4": "COLLABORATIVE CENTRES",
+    "Niveau 3": "EpiCARE",
+    "Niveau 4": "E-PILEPSY (Not full member of EpiCARE)",
     "Niveau 5": "",
     "Type": ""
   },
   {
     "Niveau 1": "SP8",
     "Niveau 2": "EPILEPSY",
-    "Niveau 3": "E-PILEPSY",
-    "Niveau 4": "COLLABORATIVE CENTRES",
+    "Niveau 3": "EpiCARE",
+    "Niveau 4": "E-PILEPSY (Not full member of EpiCARE)",
     "Niveau 5": "Ghent University Hospital",
     "Type": "HOSPITAL"
   },
   {
     "Niveau 1": "SP8",
     "Niveau 2": "EPILEPSY",
-    "Niveau 3": "E-PILEPSY",
-    "Niveau 4": "COLLABORATIVE CENTRES",
+    "Niveau 3": "EpiCARE",
+    "Niveau 4": "E-PILEPSY (Not full member of EpiCARE)",
     "Niveau 5": "European Epilepsy Monitoring Unit Association",
     "Type": "EXT"
   },
   {
     "Niveau 1": "SP8",
     "Niveau 2": "EPILEPSY",
-    "Niveau 3": "E-PILEPSY",
-    "Niveau 4": "COLLABORATIVE CENTRES",
-    "Niveau 5": "Kuopio University Hospital",
+    "Niveau 3": "EpiCARE",
+    "Niveau 4": "E-PILEPSY (Not full member of EpiCARE)",
+    "Niveau 5": "Hopital de Hautepierre Service Neurologie",
     "Type": "HOSPITAL"
   },
   {
     "Niveau 1": "SP8",
     "Niveau 2": "EPILEPSY",
-    "Niveau 3": "E-PILEPSY",
-    "Niveau 4": "COLLABORATIVE CENTRES",
-    "Niveau 5": "Hopital de Hautepierre, Service Neurologie",
+    "Niveau 3": "EpiCARE",
+    "Niveau 4": "E-PILEPSY (Not full member of EpiCARE)",
+    "Niveau 5": "Beaumont Hospital Epilepsy Service",
     "Type": "HOSPITAL"
   },
   {
     "Niveau 1": "SP8",
     "Niveau 2": "EPILEPSY",
-    "Niveau 3": "E-PILEPSY",
-    "Niveau 4": "COLLABORATIVE CENTRES",
-    "Niveau 5": "Beaumont Hospital, Epilepsy Service",
-    "Type": "HOSPITAL"
-  },
-  {
-    "Niveau 1": "SP8",
-    "Niveau 2": "EPILEPSY",
-    "Niveau 3": "E-PILEPSY",
-    "Niveau 4": "COLLABORATIVE CENTRES",
+    "Niveau 3": "EpiCARE",
+    "Niveau 4": "E-PILEPSY (Not full member of EpiCARE)",
     "Niveau 5": "National Institute of Neurosciences",
     "Type": "UNI"
   },
   {
     "Niveau 1": "SP8",
     "Niveau 2": "EPILEPSY",
-    "Niveau 3": "E-PILEPSY",
-    "Niveau 4": "COLLABORATIVE CENTRES",
+    "Niveau 3": "EpiCARE",
+    "Niveau 4": "E-PILEPSY (Not full member of EpiCARE)",
     "Niveau 5": "Vilnius University Hospital Santarškių Klinikos",
     "Type": "HOSPITAL"
   },
   {
     "Niveau 1": "SP8",
     "Niveau 2": "EPILEPSY",
-    "Niveau 3": "E-PILEPSY",
-    "Niveau 4": "COLLABORATIVE CENTRES",
+    "Niveau 3": "EpiCARE",
+    "Niveau 4": "E-PILEPSY (Not full member of EpiCARE)",
     "Niveau 5": "Carol Davila University of Medicine",
     "Type": "HOSPITAL"
   },
   {
     "Niveau 1": "SP8",
     "Niveau 2": "EPILEPSY",
-    "Niveau 3": "E-PILEPSY",
-    "Niveau 4": "COLLABORATIVE CENTRES",
+    "Niveau 3": "EpiCARE",
+    "Niveau 4": "E-PILEPSY (Not full member of EpiCARE)",
     "Niveau 5": "Moscow Research & Clinical Center for Neuropsychiatry",
     "Type": "HOSPITAL"
   },
   {
     "Niveau 1": "SP8",
     "Niveau 2": "EPILEPSY",
-    "Niveau 3": "E-PILEPSY",
-    "Niveau 4": "COLLABORATIVE CENTRES",
+    "Niveau 3": "EpiCARE",
+    "Niveau 4": "E-PILEPSY (Not full member of EpiCARE)",
     "Niveau 5": "Hospital Ruber Internacional",
     "Type": "HOSPITAL"
   },
   {
     "Niveau 1": "SP8",
     "Niveau 2": "EPILEPSY",
-    "Niveau 3": "E-PILEPSY",
-    "Niveau 4": "COLLABORATIVE CENTRES",
+    "Niveau 3": "EpiCARE",
+    "Niveau 4": "E-PILEPSY (Not full member of EpiCARE)",
     "Niveau 5": "HUG",
     "Type": "HOSPITAL"
   },
   {
     "Niveau 1": "SP8",
     "Niveau 2": "EPILEPSY",
-    "Niveau 3": "E-PILEPSY",
-    "Niveau 4": "COLLABORATIVE CENTRES",
+    "Niveau 3": "EpiCARE",
+    "Niveau 4": "E-PILEPSY (Not full member of EpiCARE)",
     "Niveau 5": "Klinik Eletrofizyoloji BD, Nöroloji ABD",
     "Type": "HOSPITAL"
   },
   {
     "Niveau 1": "SP8",
     "Niveau 2": "EPILEPSY",
-    "Niveau 3": "E-PILEPSY",
-    "Niveau 4": "COLLABORATIVE CENTRES",
+    "Niveau 3": "EpiCARE",
+    "Niveau 4": "E-PILEPSY (Not full member of EpiCARE)",
     "Niveau 5": "International League Against Epilepsy",
     "Type": "EXT"
   },
   {
     "Niveau 1": "SP8",
     "Niveau 2": "EPILEPSY",
-    "Niveau 3": "E-PILEPSY",
-    "Niveau 4": "COLLABORATIVE CENTRES",
+    "Niveau 3": "EpiCARE",
+    "Niveau 4": "E-PILEPSY (Not full member of EpiCARE)",
     "Niveau 5": "University of Calagry",
     "Type": "UNI"
   },
   {
     "Niveau 1": "SP8",
     "Niveau 2": "EPILEPSY",
-    "Niveau 3": "E-PILEPSY",
-    "Niveau 4": "UCL",
-    "Niveau 5": "",
+    "Niveau 3": "EpiCARE",
+    "Niveau 4": "E-PILEPSY (Not full member of EpiCARE)",
+    "Niveau 5": "Niguardia Hospital",
+    "Type": "HOSPITAL"
+  },
+  {
+    "Niveau 1": "SP8",
+    "Niveau 2": "EPILEPSY",
+    "Niveau 3": "EpiCARE",
+    "Niveau 4": "E-PILEPSY (Not full member of EpiCARE)",
+    "Niveau 5": "Freiburg Hospital - EPILEPSIEZENTRUM",
+    "Type": "HOSPITAL"
+  },
+  {
+    "Niveau 1": "SP8",
+    "Niveau 2": "EPILEPSY",
+    "Niveau 3": "EpiCARE",
+    "Niveau 4": "E-PILEPSY (Not full member of EpiCARE)",
+    "Niveau 5": "UNIVERSITY OF THESSALONIKI",
     "Type": "UNI"
   },
   {
     "Niveau 1": "SP8",
     "Niveau 2": "EPILEPSY",
-    "Niveau 3": "E-PILEPSY",
+    "Niveau 3": "EpiCARE",
+    "Niveau 4": "E-PILEPSY (Not full member of EpiCARE)",
+    "Niveau 5": "UNIVERSITY HOSPITAL SAINT IVAN RILSKI",
+    "Type": "HOSPITAL"
+  },
+  {
+    "Niveau 1": "SP8",
+    "Niveau 2": "EPILEPSY",
+    "Niveau 3": "EpiCARE",
+    "Niveau 4": "E-PILEPSY (Not full member of EpiCARE)",
+    "Niveau 5": "KLINICKI BOLNICKI CENTAR ZAGREB",
+    "Type": "HOSPITAL"
+  },
+  {
+    "Niveau 1": "SP8",
+    "Niveau 2": "EPILEPSY",
+    "Niveau 3": "EpiCARE",
+    "Niveau 4": "E-PILEPSY (Not full member of EpiCARE)",
+    "Niveau 5": "CHARLES UNIVERSITY PRAGUE",
+    "Type": "UNI"
+  },
+  {
+    "Niveau 1": "SP8",
+    "Niveau 2": "EPILEPSY",
+    "Niveau 3": "EpiCARE",
+    "Niveau 4": "Kuopio University Hospital",
+    "Niveau 5": "",
+    "Type": "HOSPITAL"
+  },
+  {
+    "Niveau 1": "SP8",
+    "Niveau 2": "EPILEPSY",
+    "Niveau 3": "EpiCARE",
     "Niveau 4": "UCLB LYON",
     "Niveau 5": "",
     "Type": "UNI"
@@ -162,7 +202,7 @@ export default [
   {
     "Niveau 1": "SP8",
     "Niveau 2": "EPILEPSY",
-    "Niveau 3": "E-PILEPSY",
+    "Niveau 3": "EpiCARE",
     "Niveau 4": "UMC UTRECHT",
     "Niveau 5": "",
     "Type": "HOSPITAL"
@@ -170,7 +210,7 @@ export default [
   {
     "Niveau 1": "SP8",
     "Niveau 2": "EPILEPSY",
-    "Niveau 3": "E-PILEPSY",
+    "Niveau 3": "EpiCARE",
     "Niveau 4": "UNIVERSITY OF GOTHENBURG",
     "Niveau 5": "",
     "Type": "HOSPITAL"
@@ -178,31 +218,15 @@ export default [
   {
     "Niveau 1": "SP8",
     "Niveau 2": "EPILEPSY",
-    "Niveau 3": "E-PILEPSY",
-    "Niveau 4": "Niguardia Hospital",
+    "Niveau 3": "EpiCARE",
+    "Niveau 4": "UNIKLINIKUM SALZBURG",
     "Niveau 5": "",
     "Type": "HOSPITAL"
   },
   {
     "Niveau 1": "SP8",
     "Niveau 2": "EPILEPSY",
-    "Niveau 3": "E-PILEPSY",
-    "Niveau 4": "UNIVERSITÄTS KLINIKUMBONN",
-    "Niveau 5": "",
-    "Type": "HOSPITAL"
-  },
-  {
-    "Niveau 1": "SP8",
-    "Niveau 2": "EPILEPSY",
-    "Niveau 3": "E-PILEPSY",
-    "Niveau 4": "UNIKLINIKUM SLZBURG",
-    "Niveau 5": "",
-    "Type": "HOSPITAL"
-  },
-  {
-    "Niveau 1": "SP8",
-    "Niveau 2": "EPILEPSY",
-    "Niveau 3": "E-PILEPSY",
+    "Niveau 3": "EpiCARE",
     "Niveau 4": "Oslo University Hospital",
     "Niveau 5": "",
     "Type": "HOSPITAL"
@@ -210,56 +234,8 @@ export default [
   {
     "Niveau 1": "SP8",
     "Niveau 2": "EPILEPSY",
-    "Niveau 3": "E-PILEPSY",
-    "Niveau 4": "Freiburg Hospital - EPILEPSIEZENTRUM",
-    "Niveau 5": "",
-    "Type": "HOSPITAL"
-  },
-  {
-    "Niveau 1": "SP8",
-    "Niveau 2": "EPILEPSY",
-    "Niveau 3": "E-PILEPSY",
-    "Niveau 4": "UNIVERSITY OF THESSALONIKI",
-    "Niveau 5": "",
-    "Type": "UNI"
-  },
-  {
-    "Niveau 1": "SP8",
-    "Niveau 2": "EPILEPSY",
-    "Niveau 3": "E-PILEPSY",
-    "Niveau 4": "UNIVERSITY HOSPITAL SAINT IVAN RILSKI",
-    "Niveau 5": "",
-    "Type": "HOSPITAL"
-  },
-  {
-    "Niveau 1": "SP8",
-    "Niveau 2": "EPILEPSY",
-    "Niveau 3": "E-PILEPSY",
-    "Niveau 4": "KLINICKI BOLNICKI CENTAR ZAGREB",
-    "Niveau 5": "",
-    "Type": "HOSPITAL"
-  },
-  {
-    "Niveau 1": "SP8",
-    "Niveau 2": "EPILEPSY",
-    "Niveau 3": "E-PILEPSY",
-    "Niveau 4": "CHARLES UNIVERSITY PRAGUE",
-    "Niveau 5": "",
-    "Type": "UNI"
-  },
-  {
-    "Niveau 1": "SP8",
-    "Niveau 2": "EPILEPSY",
     "Niveau 3": "EpiCARE",
-    "Niveau 4": "",
-    "Niveau 5": "",
-    "Type": ""
-  },
-  {
-    "Niveau 1": "SP8",
-    "Niveau 2": "EPILEPSY",
-    "Niveau 3": "EpiCARE",
-    "Niveau 4": "Great Ormond Street Hospital for Children NHS Trust",
+    "Niveau 4": "UCL & Great Ormond Street Hospital for Children NHS Trust",
     "Niveau 5": "",
     "Type": "HOSPITAL"
   },
@@ -299,7 +275,7 @@ export default [
     "Niveau 1": "SP8",
     "Niveau 2": "EPILEPSY",
     "Niveau 3": "EpiCARE",
-    "Niveau 4": "St. Anne's University Hospital, Brno",
+    "Niveau 4": "St. Anne's University Hospital Brno",
     "Niveau 5": "",
     "Type": "HOSPITAL"
   },
@@ -331,7 +307,7 @@ export default [
     "Niveau 1": "SP8",
     "Niveau 2": "EPILEPSY",
     "Niveau 3": "EpiCARE",
-    "Niveau 4": "Hopital Enfant Malade, Necker",
+    "Niveau 4": "Hopital Enfant Malade Necker",
     "Niveau 5": "",
     "Type": "HOSPITAL"
   },
@@ -411,7 +387,7 @@ export default [
     "Niveau 1": "SP8",
     "Niveau 2": "EPILEPSY",
     "Niveau 3": "EpiCARE",
-    "Niveau 4": "IRCCS Institute of Neurological Sciences of Bologna (INSB)-AUSL di Bologna",
+    "Niveau 4": "IRCCS Institute of Neurological Sciences of Bologna",
     "Niveau 5": "",
     "Type": "HOSPITAL"
   },
@@ -419,7 +395,7 @@ export default [
     "Niveau 1": "SP8",
     "Niveau 2": "EPILEPSY",
     "Niveau 3": "EpiCARE",
-    "Niveau 4": "Centro de Referencia de Epilepsias Refractrias, Hosp de Santa Maria",
+    "Niveau 4": "Centro de Referencia de Epilepsias Refractrias Hosp de Santa Maria",
     "Niveau 5": "",
     "Type": "HOSPITAL"
   },
@@ -467,6 +443,14 @@ export default [
     "Niveau 1": "SP8",
     "Niveau 2": "EPILEPSY",
     "Niveau 3": "EpiCARE",
+    "Niveau 4": "CHUV Lausanne Hospital",
+    "Niveau 5": "",
+    "Type": "HOSPITAL"
+  },
+  {
+    "Niveau 1": "SP8",
+    "Niveau 2": "EPILEPSY",
+    "Niveau 3": "EpiCARE",
     "Niveau 4": "Sahlgrenska University Hospital",
     "Niveau 5": "",
     "Type": "HOSPITAL"
@@ -483,7 +467,7 @@ export default [
     "Niveau 1": "SP8",
     "Niveau 2": "EPILEPSY",
     "Niveau 3": "WP8.8 and 8.10 : Federated analysis of human intracerebral stimulation and recording data",
-    "Niveau 4": "Freiburg Hospital",
+    "Niveau 4": "Freiburg Hospital - EPILEPSIEZENTRUM",
     "Niveau 5": "",
     "Type": "HOSPITAL"
   },
@@ -515,7 +499,7 @@ export default [
     "Niveau 1": "SP8",
     "Niveau 2": "EPILEPSY",
     "Niveau 3": "WP8.8 and 8.10 : Federated analysis of human intracerebral stimulation and recording data",
-    "Niveau 4": "Hospital Lyon",
+    "Niveau 4": "HOSPICES CIVILS DE LYON",
     "Niveau 5": "",
     "Type": "HOSPITAL"
   },
@@ -523,7 +507,7 @@ export default [
     "Niveau 1": "SP8",
     "Niveau 2": "EPILEPSY",
     "Niveau 3": "WP8.8 and 8.10 : Federated analysis of human intracerebral stimulation and recording data",
-    "Niveau 4": "Hospital Niguardia",
+    "Niveau 4": "Niguardia Hospital",
     "Niveau 5": "",
     "Type": "HOSPITAL"
   },
@@ -551,14 +535,14 @@ export default [
     "Niveau 5": "",
     "Type": "UNI"
   },
-  // {
-  //   "Niveau 1": "SP8",
-  //   "Niveau 2": "PSYCHIATRIC DISORDERS",
-  //   "Niveau 3": "",
-  //   "Niveau 4": "",
-  //   "Niveau 5": "",
-  //   "Type": ""
-  // },
+  {
+    "Niveau 1": "SP8",
+    "Niveau 2": "PSYCHIATRIC DISORDERS",
+    "Niveau 3": "",
+    "Niveau 4": "",
+    "Niveau 5": "",
+    "Type": ""
+  },
   {
     "Niveau 1": "SP8",
     "Niveau 2": "PSYCHIATRIC DISORDERS",
@@ -659,7 +643,7 @@ export default [
     "Niveau 1": "SP8",
     "Niveau 2": "TRAUMATIC BRAIN INJURIES",
     "Niveau 3": "CENTER TBI",
-    "Niveau 4": "Witten/Herdecke University",
+    "Niveau 4": "Witten Herdecke University",
     "Niveau 5": "",
     "Type": "UNI"
   },
@@ -699,7 +683,7 @@ export default [
     "Niveau 1": "SP8",
     "Niveau 2": "TRAUMATIC BRAIN INJURIES",
     "Niveau 3": "CENTER TBI",
-    "Niveau 4": "Fondazione IRCCS Ca'Granda - Ospedale Maggiore Policlinico",
+    "Niveau 4": "IRCCS Ca'Granda - Ospedale Maggiore Policlinico",
     "Niveau 5": "",
     "Type": "HOSPITAL"
   },
@@ -715,7 +699,7 @@ export default [
     "Niveau 1": "SP8",
     "Niveau 2": "TRAUMATIC BRAIN INJURIES",
     "Niveau 3": "CENTER TBI",
-    "Niveau 4": "Assistance Publique - Hopitaux de Paris, Groupe Hospitalier Pitié-Salpêtrière",
+    "Niveau 4": "Hôpital Pitié-Salepétrière Paris",
     "Niveau 5": "",
     "Type": "HOSPITAL"
   },
@@ -947,7 +931,7 @@ export default [
     "Niveau 1": "SP8",
     "Niveau 2": "DEMENTIA",
     "Niveau 3": "ERN - RND",
-    "Niveau 4": "Assistance Publique-Hôpitaux de Paris, Hôpital Pitié-Salepétrière",
+    "Niveau 4": "Hôpital Pitié-Salepétrière Paris",
     "Niveau 5": "",
     "Type": "HOSPITAL"
   },
@@ -995,7 +979,7 @@ export default [
     "Niveau 1": "SP8",
     "Niveau 2": "DEMENTIA",
     "Niveau 3": "ERN - RND",
-    "Niveau 4": "Foundation IRCCS neurological institute Carlo Besta, Milan",
+    "Niveau 4": "IRCCS neurological institute Carlo Besta Milan",
     "Niveau 5": "",
     "Type": "HOSPITAL"
   },
@@ -1003,7 +987,7 @@ export default [
     "Niveau 1": "SP8",
     "Niveau 2": "DEMENTIA",
     "Niveau 3": "ERN - RND",
-    "Niveau 4": "IRCCS Clinical Institute Humanitas, Milan",
+    "Niveau 4": "IRCCS Clinical Institute Humanitas Milan",
     "Niveau 5": "",
     "Type": "HOSPITAL"
   },
@@ -1019,7 +1003,7 @@ export default [
     "Niveau 1": "SP8",
     "Niveau 2": "DEMENTIA",
     "Niveau 3": "ERN - RND",
-    "Niveau 4": "Erasmus MC, Rotterdam",
+    "Niveau 4": "Erasmus MC Rotterdam",
     "Niveau 5": "",
     "Type": "UNI"
   },

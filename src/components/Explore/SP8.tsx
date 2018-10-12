@@ -29,7 +29,7 @@ const layout = {
 
 // const layout = {
 //   // Type of layout animation. The option set is {'during', 'end', false}
-//   animate: "during",
+//   animate: false,
 //   // Divisor to compute edge forces
 //   edgeElasticity: 0.15,
 //   // Whether to fit the network view after when done
@@ -52,7 +52,7 @@ const layout = {
 //   // Whether to include labels in node dimensions. Useful for avoiding label overlap
 //   nodeDimensionsIncludeLabels: true,
 //   // Node repulsion (non overlapping) multiplier
-//   nodeRepulsion: 105000,
+//   nodeRepulsion: 15000,
 //   // Maximum number of iterations to perform
 //   numIter: 1000,
 //   // Padding on fit
@@ -135,11 +135,14 @@ class Graph extends Component<any> {
     }
 
     if (target.isNode()) {
+      // console.log(target)
       const cy = this.cy;
       const touchedNode = this.foldedNodes.find(
         n => n.target.id() === target.id()
       );
-      const rootSelect = (target2: any) => cy.elements().difference(target2.connectedEdges().union(target2.connectedEdges().connectedNodes()))
+      const selectChildsElements = (target2: any) => target.id() === "SP8" ?
+        cy.elements().difference(target2.connectedEdges().union(target2.connectedEdges().connectedNodes()))
+        : target.successors().union(target.successors().connectedEdges())
 
       if (touchedNode) {
         const index = this.foldedNodes.indexOf(touchedNode);
@@ -147,9 +150,7 @@ class Graph extends Component<any> {
           touchedNode.collection.restore();
           touchedNode.folded = false;
         } else {
-          const collection = (target.id() === "SP8") ? 
-          rootSelect(target) : 
-          target.successors();
+          const collection = selectChildsElements(target)
           cy.remove(collection);
           touchedNode.folded = true;
           touchedNode.collection = collection;
@@ -157,8 +158,8 @@ class Graph extends Component<any> {
         }
         this.foldedNodes.splice(index, 1, touchedNode);
       } else {
-        const collection = (target.id() === "SP8") ? 
-        rootSelect(target) : target.successors();
+        const collection = selectChildsElements(target)
+        // console.log(collection.map((c: any) => c.data.id))
         this.foldedNodes.push({
           collection,
           folded: true,

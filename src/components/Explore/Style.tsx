@@ -31,7 +31,7 @@ const style: cytoscape.CssStyleDeclaration = [
     selector: "node[level = 0]",
     style: {
       // "background-color": "#6B6A68",
-      "background-color": "purple",
+      "background-color": "darkslateblue",
       color: "white",
       "font-size": "32px",
       "font-weight": "bold",
@@ -52,7 +52,7 @@ const style: cytoscape.CssStyleDeclaration = [
   {
     selector: "node[level = 2]",
     style: {
-      "background-color": "#D40CE8"
+      "background-color": "#FF629B"
     }
   },
   {
@@ -94,7 +94,7 @@ const style: cytoscape.CssStyleDeclaration = [
   {
     selector: "node[level = 90]",
     style: {
-      "background-color": "#F2B134"
+      "background-color": "#D1B414"
     }
   },
   {
