@@ -1,10 +1,10 @@
 // tslint:disable:no-console
+import ProcessData from "@app/components/ProcessData";
+import style from "@app/components/Style";
 import cytoscape from "cytoscape";
 import coseBilkent from "cytoscape-cose-bilkent";
 import React, { Component } from "react";
-import ProcessData from "./ProcessData";
-import { rootNodeId } from "./sp8data";
-import style from "./Style";
+import { rootNodeId } from "./data";
 cytoscape.use(coseBilkent);
 
 const layout = {
@@ -159,7 +159,7 @@ class Graph extends Component<any> {
           touchedNode.folded = false;
         } else {
           const collection = selectChildsElements(target);
-          
+
           touchedNode.collection = collection;
           cy.remove(collection);
           touchedNode.folded = true;

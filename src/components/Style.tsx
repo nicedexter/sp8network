@@ -1,9 +1,9 @@
 import cytoscape from "cytoscape";
-import iconHBP from "../../images/icon-hbp.png";
-import iconHospital from "../../images/icon-hospital.png";
-import iconExt from "../../images/icon-world.png";
-import iconUni from "../../images/university.png";
-import { rootNodeId } from "./sp8data";
+import iconHBP from "../images/icon-hbp.png";
+import iconHospital from "../images/icon-hospital.png";
+import iconExt from "../images/icon-world.png";
+import iconUni from "../images/university.png";
+import { rootNodeId } from "./data";
 
 const style: cytoscape.CssStyleDeclaration = [
   {
@@ -55,7 +55,7 @@ const style: cytoscape.CssStyleDeclaration = [
   {
     selector: "node[cluster = 1]",
     style: {
-      "background-color": "#6B6A68",
+      "background-color": "#6B6A68"
     }
   },
   {

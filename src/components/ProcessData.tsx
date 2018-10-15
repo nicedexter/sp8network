@@ -1,5 +1,5 @@
 // tslint:disable:no-console
-import { data, rootNodeId } from "./sp8data";
+import { data, rootNodeId } from "./data";
 
 interface IElement {
   nodes: any;
