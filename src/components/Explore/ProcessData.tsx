@@ -1,5 +1,5 @@
 // tslint:disable:no-console
-import data from "./sp8data";
+import { data, rootNodeId } from "./sp8data";
 
 interface IElement {
   nodes: any;
@@ -15,12 +15,12 @@ class ProcessData {
       r !== "" && r !== "..." ? r.split(" ").join("") : null;
 
     // Build nodes from csv
-    data.forEach(row => {
+    data.forEach((row, i) => {
       const computedRow = Object.keys(row).filter(
         key => key !== "Type" && row[key] !== "" && row[key] !== "..."
       );
 
-      computedRow.forEach((key, i) => {
+      computedRow.forEach((key, j) => {
         const val = row[key];
         const id = makeId(val);
 
@@ -29,110 +29,109 @@ class ProcessData {
         //   return;
         // }
 
-        let level;
+        let cluster;
         const level2 = row["Niveau 2"];
         const level3 = row["Niveau 3"];
         const level4 = row["Niveau 4"];
 
+        const parentId = computedRow.length === 2 ? rootNodeId : undefined;
+
+        if (id === rootNodeId && computedRow.length === 1) {
+          cluster = 0;
+        }
+
         if (level2 === "EPILEPSY") {
-          level = 1;
+          cluster = 1;
         }
 
         if (level2 === "TRAUMATIC BRAIN INJURIES") {
-          level = 7;
+          cluster = 7;
         }
 
         if (level2 === "DEMENTIA") {
-          level = 90;
+          cluster = 90;
         }
 
         if (level2 === "MIP DATA GOVERNANCE STEERING COMMITTEE") {
-          level = 12;
+          cluster = 12;
         }
 
         if (level2 === "PSYCHIATRIC DISORDERS") {
-          level = 12;
+          cluster = 12;
         }
 
         if (level2 === "OTHER INTERACTIONS") {
-          level = 13;
+          cluster = 13;
         }
 
         if (level2 === "ONTOLOGIES") {
-          level = 14;
+          cluster = 14;
         }
 
         if (level3 === "EpiCARE") {
-          level = 4;
+          cluster = 4;
         }
 
         if (
           level3 ===
           "WP8.8 and 8.10 : Federated analysis of human intracerebral stimulation and recording data"
         ) {
-          level = 5;
+          cluster = 5;
         }
 
         if (
           level3 ===
           "WP8.8 and 8.10 : Federated analysis of human intracerebral stimulation and recording data"
         ) {
-          level = 6;
+          cluster = 6;
         }
 
         if (level3 === "CENTER TBI") {
-          level = 7;
+          cluster = 7;
         }
 
         if (level3 === "CREACTIVE") {
-          level = 8;
+          cluster = 8;
         }
 
         if (level3 === "ERN - RND") {
-          level = 9;
+          cluster = 9;
         }
 
         if (
           level3 ===
           "WP8.7TVB � NDD - Testing pathophysiological models of brain diseases"
         ) {
-          level = 10;
+          cluster = 10;
         }
 
         if (level3 === "SGA1 Partnering Hospitals") {
-          level = 11;
+          cluster = 11;
         }
 
         if (level4 === "E-PILEPSY (Not full member of EpiCARE)") {
-          level = 2;
+          cluster = 2;
         }
 
         if (level4 === "COLLABORATIVE CENTRES") {
-          level = 3;
+          cluster = 3;
         }
 
         let type: string | undefined = row.Type;
-        if (Object.keys(computedRow).length - 1 !== i) {
+        if (Object.keys(computedRow).length - 1 !== j) {
           type = undefined;
         }
 
         const node = {
           data: {
+            cluster,
             data: row,
             id,
             label: val,
-            level,
+            parentId,
             type,
-            weight: 0
-            // parent: parent ? parent : undefined
           }
         };
-
-        // console.log(`${val} - ${level}`)
-        if (node.data.id === "SP8") {
-          node.data.level = 0;
-          node.data.weight = 100;
-        }
 
         nodes.push(node);
         // console.log(node.data.label, node.data.data)
@@ -163,9 +162,9 @@ class ProcessData {
         const node1 = nodes.find((n: any) => n.data.id === id);
 
         edges.push({
-          data: {
+          data:{
+            cluster: node1 ? node1.data.cluster : null,
             id: `${id}-${id2}`,
-            level: node1 ? node1.data.level : null,
             source: id,
             target: id2
           }

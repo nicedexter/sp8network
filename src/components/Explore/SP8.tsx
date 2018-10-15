@@ -3,8 +3,8 @@ import cytoscape from "cytoscape";
 import coseBilkent from "cytoscape-cose-bilkent";
 import React, { Component } from "react";
 import ProcessData from "./ProcessData";
+import { rootNodeId } from "./sp8data";
 import style from "./Style";
-
 cytoscape.use(coseBilkent);
 
 const layout = {
@@ -140,25 +140,34 @@ class Graph extends Component<any> {
       const touchedNode = this.foldedNodes.find(
         n => n.target.id() === target.id()
       );
-      const selectChildsElements = (target2: any) => target.id() === "SP8" ?
-        cy.elements().difference(target2.connectedEdges().union(target2.connectedEdges().connectedNodes()))
-        : target.successors().union(target.successors().connectedEdges())
+      const selectChildsElements = (target2: any) =>
+        target.id() === rootNodeId
+          ? cy
+              .elements()
+              .difference(
+                target2
+                  .connectedEdges()
+                  .union(target2.connectedEdges().connectedNodes())
+              )
+          : target.successors().union(target.successors().connectedEdges());
 
       if (touchedNode) {
         const index = this.foldedNodes.indexOf(touchedNode);
+        // console.log(touchedNode);
         if (touchedNode.folded) {
           touchedNode.collection.restore();
           touchedNode.folded = false;
         } else {
-          const collection = selectChildsElements(target)
+          const collection = selectChildsElements(target);
+          
+          touchedNode.collection = collection;
           cy.remove(collection);
           touchedNode.folded = true;
-          touchedNode.collection = collection;
           target.restore();
         }
         this.foldedNodes.splice(index, 1, touchedNode);
       } else {
-        const collection = selectChildsElements(target)
+        const collection = selectChildsElements(target);
         // console.log(collection.map((c: any) => c.data.id))
         this.foldedNodes.push({
           collection,
