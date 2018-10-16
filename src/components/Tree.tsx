@@ -110,7 +110,6 @@ class Graph extends Component<any> {
 
   public render = () => {
     return (
-      <div>
         <div
           className="graph"
           ref={(cy: any) => {
@@ -122,7 +121,6 @@ class Graph extends Component<any> {
             width: "100%"
           }}
         />
-      </div>
     );
   };
 
