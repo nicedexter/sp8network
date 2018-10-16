@@ -49,7 +49,7 @@ class ProcessData {
         }
 
         if (level2 === "DEMENTIA") {
-          cluster = 90;
+          cluster = 15;
         }
 
         if (level2 === "MIP DATA GOVERNANCE STEERING COMMITTEE") {
@@ -57,7 +57,7 @@ class ProcessData {
         }
 
         if (level2 === "PSYCHIATRIC DISORDERS") {
-          cluster = 12;
+          cluster = 16;
         }
 
         if (level2 === "OTHER INTERACTIONS") {
