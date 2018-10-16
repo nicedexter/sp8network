@@ -129,7 +129,7 @@ class ProcessData {
             id,
             label: val,
             parentId,
-            type,
+            type
           }
         };
 

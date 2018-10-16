@@ -72,7 +72,6 @@ const layout = {
 class Graph extends Component<any> {
   private cy: any;
   private cyRef: any;
-  private foldedNodes: any[] = [];
   private currentLocation: any;
 
   public componentDidMount() {
@@ -110,71 +109,46 @@ class Graph extends Component<any> {
 
   public render = () => {
     return (
-        <div
-          className="graph"
-          ref={(cy: any) => {
-            this.cyRef = cy;
-          }}
-          style={{
-            display: "block",
-            height: "100%",
-            width: "100%"
-          }}
-        />
+      <div
+        className="graph"
+        ref={(cy: any) => {
+          this.cyRef = cy;
+        }}
+        style={{
+          display: "block",
+          height: "100%",
+          width: "100%"
+        }}
+      />
     );
   };
 
   private handleTap = (event: any): void => {
     // console.log("handleTap", event.type);
     const { target } = event;
+    const cy = this.cy;
 
     if (target === this.cy) {
+      cy.elements().removeClass("dimmed");
       return;
     }
 
     if (target.isNode()) {
-      // console.log(target)
-      const cy = this.cy;
-      const touchedNode = this.foldedNodes.find(
-        n => n.target.id() === target.id()
-      );
-      const selectChildsElements = (target2: any) =>
-        target.id() === rootNodeId
+      const selectChildsElements = (t: any) =>
+        t.id() === rootNodeId
           ? cy
               .elements()
               .difference(
-                target2
-                  .connectedEdges()
-                  .union(target2.connectedEdges().connectedNodes())
+                t.connectedEdges().union(t.connectedEdges().connectedNodes())
               )
-          : target.successors().union(target.successors().connectedEdges());
+          : cy
+              .elements()
+              .difference(t.successors())
+              .difference(t);
 
-      if (touchedNode) {
-        const index = this.foldedNodes.indexOf(touchedNode);
-        // console.log(touchedNode);
-        if (touchedNode.folded) {
-          touchedNode.collection.restore();
-          touchedNode.folded = false;
-        } else {
-          const collection = selectChildsElements(target);
-
-          touchedNode.collection = collection;
-          cy.remove(collection);
-          touchedNode.folded = true;
-          target.restore();
-        }
-        this.foldedNodes.splice(index, 1, touchedNode);
-      } else {
-        const collection = selectChildsElements(target);
-        // console.log(collection.map((c: any) => c.data.id))
-        this.foldedNodes.push({
-          collection,
-          folded: true,
-          target
-        });
-        cy.remove(collection);
-        target.restore();
-      }
+      const selectedChilds = selectChildsElements(target);
+      cy.elements().removeClass("dimmed");
+      selectedChilds.addClass("dimmed");
     }
     // console.log(this.foldedNodes);
   };

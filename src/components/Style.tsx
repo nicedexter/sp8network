@@ -29,16 +29,24 @@ const colors = [
   "#b5522c"
 ];
 
-const clusterColors = (color: string, i: number) => (klass: string) => ({
-  selector: `${klass}[cluster = ${i}]`,
+const clusterNodeColors = (color: string, i: number) => ({
+  selector: `node[cluster = ${i}]`,
   style: {
     "background-color": color
   }
 });
 
+const clusterEdgeColors = (color: string, i: number) => ({
+  selector: `edge[cluster = ${i}]`,
+  style: {
+    "line-color": color
+  }
+});
+
 const clusters = [
-  ...colors.map((color, i) => clusterColors(color, i)('node')),
-  ...colors.map((color, i) => clusterColors(color, i)('edge'))]; // .concat((colors.map(clusterColors), 'edge'))
+  ...colors.map(clusterNodeColors),
+  ...colors.map(clusterEdgeColors)
+]; // .concat((colors.map(clusterColors), 'edge'))
 
 const style: cytoscape.CssStyleDeclaration = [
   {
@@ -69,6 +77,7 @@ const style: cytoscape.CssStyleDeclaration = [
       width: "54px"
     }
   },
+  
   {
     selector: "node[cluster = 0]",
     style: {
@@ -124,7 +133,21 @@ const style: cytoscape.CssStyleDeclaration = [
       "background-image-opacity": "0.6"
     }
   },
-  ...clusters
+  ...clusters,
+  {
+    selector: 'node.dimmed',
+    style:{
+      "background-color": "gray",
+      "background-image-opacity": 0.2,
+      "opacity": 0.4
+    }
+  },
+  {
+    selector: 'edge.dimmed',
+    style:{
+      "opacity": 0.1
+    }
+  },
 ];
 
 console.log(style);
