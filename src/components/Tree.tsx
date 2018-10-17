@@ -7,7 +7,7 @@ import React, { Component } from "react";
 import { rootNodeId } from "./data";
 cytoscape.use(coseBilkent);
 
-const layout = {
+const layout: cytoscape.LayoutOptions = {
   animate: false,
   componentSpacing: 100,
   coolingFactor: 0.95,
@@ -69,11 +69,11 @@ const layout = {
 //   tilingPaddingVertical: 10
 // };
 
-class Graph extends Component<any> {
-  private cy: any;
+class Graph extends Component {
+  private cy: cytoscape.Core;
   private cyRef: any;
-  private currentLocation: any;
-  private selectedTarget: any;
+  private currentTargetPosition: cytoscape.Position;
+  private selectedTarget: cytoscape.NodeDefinition | undefined;
 
   public componentDidMount() {
     const elements = ProcessData.run();
@@ -173,7 +173,7 @@ class Graph extends Component<any> {
       return;
     }
 
-    this.currentLocation = event.position;
+    this.currentTargetPosition = event.position;
     const collection = target.successors();
     collection.map((c: any) => {
       c.scratch()._x = c.position().x;
@@ -183,8 +183,8 @@ class Graph extends Component<any> {
     });
 
     cy.on("tapdrag", (evt: any) => {
-      const moveX = evt.position.x - this.currentLocation.x;
-      const moveY = evt.position.y - this.currentLocation.y;
+      const moveX = evt.position.x - this.currentTargetPosition.x;
+      const moveY = evt.position.y - this.currentTargetPosition.y;
 
       collection.positions((c: any) => {
         const x = c.scratch()._x + moveX;
