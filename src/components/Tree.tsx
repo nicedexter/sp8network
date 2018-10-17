@@ -73,6 +73,7 @@ class Graph extends Component<any> {
   private cy: any;
   private cyRef: any;
   private currentLocation: any;
+  private selectedTarget: any;
 
   public componentDidMount() {
     const elements = ProcessData.run();
@@ -128,14 +129,18 @@ class Graph extends Component<any> {
     const { target } = event;
     const cy = this.cy;
 
-    if (target === this.cy) {
+    if (target === this.cy || target === this.selectedTarget) {
+      this.selectedTarget = undefined;
       cy.elements().removeClass("dimmed");
+  
       return;
     }
 
     if (target.isNode()) {
+      this.selectedTarget = target;
+
       const selectChildsElements = (t: any) =>
-        t.id() === rootNodeId
+         t.id() === rootNodeId
           ? cy
               .elements()
               .difference(
@@ -143,7 +148,7 @@ class Graph extends Component<any> {
               )
           : cy
               .elements()
-              .difference(t.successors())
+              .difference( t.successors().union(t.predecessors()))
               .difference(t);
 
       const selectedChilds = selectChildsElements(target);
@@ -156,7 +161,6 @@ class Graph extends Component<any> {
   private handleDrag = (event: any) => {
     // console.log("handleGrab", event.type);
     const { target, type } = event;
-
     const cy = this.cy;
 
     if (type === "free") {
